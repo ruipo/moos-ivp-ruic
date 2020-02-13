@@ -1,0 +1,16 @@
+/Users/Rui/moos-ivp-ruic/build/CMakeFiles/rebuild_cache.dir
+/Users/Rui/moos-ivp-ruic/build/CMakeFiles/edit_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/CMakeFiles/rebuild_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/CMakeFiles/edit_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/lib_behaviors-test/CMakeFiles/rebuild_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/lib_behaviors-test/CMakeFiles/edit_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/lib_behaviors-test/CMakeFiles/BHV_SimpleWaypoint.dir
+/Users/Rui/moos-ivp-ruic/build/src/pXRelayTest/CMakeFiles/rebuild_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/pXRelayTest/CMakeFiles/edit_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/pXRelayTest/CMakeFiles/pXRelayTest.dir
+/Users/Rui/moos-ivp-ruic/build/src/pExampleApp/CMakeFiles/rebuild_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/pExampleApp/CMakeFiles/edit_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/pExampleApp/CMakeFiles/pExampleApp.dir
+/Users/Rui/moos-ivp-ruic/build/src/pOdometry/CMakeFiles/rebuild_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/pOdometry/CMakeFiles/edit_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/pOdometry/CMakeFiles/pOdometry.dir
