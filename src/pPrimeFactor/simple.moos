@@ -1,0 +1,62 @@
+// Level 2 Configuration file: M. Benjamin
+
+ServerHost = localhost
+ServerPort = 9000
+
+MOOSTimeWarp = 1
+
+//------------------------------------------
+// Antler configuration  block
+ProcessConfig = ANTLER
+{
+  MSBetweenLaunches = 200
+
+  Run = MOOSDB		@ NewConsole = false
+  Run = uXMS      @ NewConsole = true
+  Run = pPrimeFactor	@ NewConsole = false
+  Run = uTimerScript @ NewConsole = false
+}
+
+ //------------------------------------------
+// uXMS configuration  block
+
+ProcessConfig = uXMS
+ {
+   VAR            = NUM_VALUE, NUM_RESULT, DB_UPTIME
+   COLOR_MAP      = NUM_VALUE, red
+   HISTORY_VAR    = NUM_VALUE
+   COLOR_MAP      = NUM_RESULT, green
+   HISTORY_VAR    = NUM_RESULT
+ }
+
+//-------------------------------------------
+// uTimerScript configuration block
+
+ ProcessConfig = uTimerScript
+ {
+   paused = false
+
+   event  = var=NUM_VALUE, val=35,  time=0.5
+   event  = var=NUM_VALUE, val=23,  time=1.5
+   event  = var=NUM_VALUE, val=10,  time=1.5
+   event  = var=NUM_VALUE, val=100,  time=2.0
+   event  = var=NUM_VALUE, val=100,  time=2.5
+   event  = var=NUM_VALUE, val=100,  time=3.0
+   event  = var=NUM_VALUE, val=100,  time=3.5
+   event  = var=NUM_VALUE, val=100,  time=4.0
+   event  = var=NUM_VALUE, val=100,  time=4.5
+   event  = var=NUM_VALUE, val=100,  time=5.0
+   event  = var=NUM_VALUE, val=100,  time=5.5
+   event  = var=NUM_VALUE, val=100,  time=6.5
+   event  = var=NUM_VALUE, val=100,  time=7.0
+   event  = var=NUM_VALUE, val=100,  time=7.5
+   event  = var=NUM_VALUE, val=100,  time=8.0
+   event  = var=NUM_VALUE, val=1034,  time=8.5
+   event  = var=NUM_VALUE, val=12305,  time=9.0
+   event  = var=NUM_VALUE, val=123,  time=9.5
+   
+   reset_max  = nolimit
+   reset_time = all-posted
+ }
+
+

@@ -11,6 +11,9 @@
 /Users/Rui/moos-ivp-ruic/build/src/pExampleApp/CMakeFiles/rebuild_cache.dir
 /Users/Rui/moos-ivp-ruic/build/src/pExampleApp/CMakeFiles/edit_cache.dir
 /Users/Rui/moos-ivp-ruic/build/src/pExampleApp/CMakeFiles/pExampleApp.dir
+/Users/Rui/moos-ivp-ruic/build/src/pPrimeFactor/CMakeFiles/rebuild_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/pPrimeFactor/CMakeFiles/edit_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/pPrimeFactor/CMakeFiles/pPrimeFactor.dir
 /Users/Rui/moos-ivp-ruic/build/src/pOdometry/CMakeFiles/rebuild_cache.dir
 /Users/Rui/moos-ivp-ruic/build/src/pOdometry/CMakeFiles/edit_cache.dir
 /Users/Rui/moos-ivp-ruic/build/src/pOdometry/CMakeFiles/pOdometry.dir
