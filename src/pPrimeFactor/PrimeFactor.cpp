@@ -2,13 +2,15 @@
 /*    NAME: ruic                                              */
 /*    ORGN: MIT                                             */
 /*    FILE: PrimeFactor.cpp                                        */
-/*    DATE:                                                 */
+/*    DATE: Feb 20 2020                                         */
 /************************************************************/
 
 #include <iterator>
 #include "MBUtils.h"
 #include "PrimeFactor.h"
 #include <string>
+#include <cstdlib>
+#include <cstdint>
 
 using namespace std;
 
@@ -17,7 +19,8 @@ using namespace std;
 
 PrimeFactor::PrimeFactor()
 {
-  m_input_val = 0;
+  m_index=0;
+  m_cal_index=0;
 }
 
 //---------------------------------------------------------
@@ -32,39 +35,29 @@ PrimeFactor::~PrimeFactor()
 
 bool PrimeFactor::OnNewMail(MOOSMSG_LIST &NewMail)
 {
+
   MOOSMSG_LIST::iterator p;
-   
+
   for(p=NewMail.begin(); p!=NewMail.end(); p++) {
     CMOOSMsg &msg = *p;
 
     string key = msg.GetKey();
 
     if (key == "NUM_VALUE"){
+      
+      PrimeEntry Ent;
+      string mystr = msg.GetString();
+      uint64_t val = strtoul(mystr.c_str(),NULL,0); //convert string input into unsigned long int
 
-    	m_input_list.push_front(to_string(msg.GetDouble()));
+      Ent.setOriginalVal(val);
+      Ent.setReceivedIndex(m_index);
 
-      // m_input_val = msg.GetDouble();
+      m_input_list.push_back(Ent);
 
-      // if (m_input_val % 2 == 0){
-      //   m_output = to_string(m_input_val)+", even";
-      // }
-      // else
-      //   m_output = to_string(m_input_val)+", odd";
-
-      // Notify("NUM_RESULT",m_output);
+      m_index = m_index + 1;
 
     }
 
-// #if 0 // Keep these around just for template
-//     string key   = msg.GetKey();
-//     string comm  = msg.GetCommunity();
-//     double dval  = msg.GetDouble();
-//     string sval  = msg.GetString(); 
-//     string msrc  = msg.GetSource();
-//     double mtime = msg.GetTime();
-//     bool   mdbl  = msg.IsDouble();
-//     bool   mstr  = msg.IsString();
-// #endif
    }
 	
    return(true);
@@ -81,25 +74,24 @@ bool PrimeFactor::OnConnectToServer()
 
 //---------------------------------------------------------
 // Procedure: Iterate()
-//            happens AppTick times per second
+// happens AppTick times per second
 
 bool PrimeFactor::Iterate()
 {
 
-	list<string>::reverse_iterator p;
-	for(p=m_input_list.rbegin(); p!=m_input_list.rend(); p++) {
-		string& str = *p;
-		m_input_val = stoi(str);
+  list<PrimeEntry>::iterator p;
+  for(p=m_input_list.begin(); p!=m_input_list.end(); p++) {
 
-		if (m_input_val % 2 == 0){
-        m_output = to_string(m_input_val)+", even";
-      }
-    else
-    	m_output = to_string(m_input_val)+", odd";
+    unsigned long int max_steps = 100000; // set max iter count to prevent blocking
+    
+    p->factor(max_steps); //find factors
 
-    Notify("NUM_RESULT",m_output);
-
-    m_input_list.remove(str);
+    if (p->done()){ //publish results if done 
+      p->setCalculatedIndex(m_cal_index);
+      Notify("PRIME_RESULT",p->getReport());
+      m_cal_index = m_cal_index+1;
+      p = m_input_list.erase(p);
+    }
 
 	}
   return(true);
@@ -107,7 +99,7 @@ bool PrimeFactor::Iterate()
 
 //---------------------------------------------------------
 // Procedure: OnStartUp()
-//            happens before connection is open
+// happens before connection is open
 
 bool PrimeFactor::OnStartUp()
 {

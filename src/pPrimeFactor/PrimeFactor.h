@@ -2,7 +2,7 @@
 /*    NAME: ruic                                              */
 /*    ORGN: MIT                                             */
 /*    FILE: PrimeFactor.h                                          */
-/*    DATE:                                                 */
+/*    DATE: Feb 20 2020                                               */
 /************************************************************/
 
 #ifndef PrimeFactor_HEADER
@@ -11,6 +11,7 @@
 #include "MOOS/libMOOS/MOOSLib.h"
 #include <list>
 #include <cstdint>
+#include "PrimeEntry.h"
 
 
 class PrimeFactor : public CMOOSApp
@@ -31,8 +32,9 @@ class PrimeFactor : public CMOOSApp
  private: // Configuration variables
 
  private: // State variables
- 	int m_input_val;
- 	std::list<std::string> m_input_list;
+ 	unsigned int m_index;
+ 	unsigned int m_cal_index;
+ 	std::list<PrimeEntry> m_input_list;
  	std::string m_output;
 };
 

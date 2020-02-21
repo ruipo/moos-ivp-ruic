@@ -2,7 +2,7 @@
 /*   NAME: ruic                                             */
 /*   ORGN: MIT Cambridge MA                                     */
 /*   FILE: PrimeFactor_Info.h                                      */
-/*   DATE: Dec 29th 1963                                        */
+/*   DATE: Feb 20 2020                                       */
 /****************************************************************/
 
 #ifndef PrimeFactor_INFO_HEADER

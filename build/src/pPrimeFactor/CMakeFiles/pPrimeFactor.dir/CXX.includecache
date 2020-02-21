@@ -6,6 +6,26 @@
 
 #IncludeRegexTransform: 
 
+/Users/Rui/moos-ivp-ruic/src/pPrimeFactor/PrimeEntry.cpp
+PrimeEntry.h
+/Users/Rui/moos-ivp-ruic/src/pPrimeFactor/PrimeEntry.h
+cmath
+-
+string
+-
+iostream
+-
+chrono
+-
+
+/Users/Rui/moos-ivp-ruic/src/pPrimeFactor/PrimeEntry.h
+string
+-
+vector
+-
+cstdint
+-
+
 /Users/Rui/moos-ivp-ruic/src/pPrimeFactor/PrimeFactor.cpp
 iterator
 -
@@ -15,12 +35,20 @@ PrimeFactor.h
 /Users/Rui/moos-ivp-ruic/src/pPrimeFactor/PrimeFactor.h
 string
 -
+cstdlib
+-
+cstdint
+-
 
 /Users/Rui/moos-ivp-ruic/src/pPrimeFactor/PrimeFactor.h
 MOOS/libMOOS/MOOSLib.h
 /Users/Rui/moos-ivp-ruic/src/pPrimeFactor/MOOS/libMOOS/MOOSLib.h
 list
 -
+cstdint
+-
+PrimeEntry.h
+/Users/Rui/moos-ivp-ruic/src/pPrimeFactor/PrimeEntry.h
 
 /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/App/include/MOOS/libMOOS/App/ClientDefines.h
 

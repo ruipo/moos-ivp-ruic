@@ -2,7 +2,7 @@
 /*   NAME: ruic                                             */
 /*   ORGN: MIT Cambridge MA                                     */
 /*   FILE: PrimeFactor_Info.cpp                               */
-/*   DATE: Dec 29th 1963                                        */
+/*   DATE: Feb 20 2020                                       */
 /****************************************************************/
 
 #include <cstdlib>

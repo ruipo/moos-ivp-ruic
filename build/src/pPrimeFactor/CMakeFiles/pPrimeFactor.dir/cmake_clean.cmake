@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "../../../bin/pPrimeFactor"
   "../../../bin/pPrimeFactor.pdb"
+  "CMakeFiles/pPrimeFactor.dir/PrimeEntry.cpp.o"
   "CMakeFiles/pPrimeFactor.dir/PrimeFactor.cpp.o"
   "CMakeFiles/pPrimeFactor.dir/PrimeFactor_Info.cpp.o"
   "CMakeFiles/pPrimeFactor.dir/main.cpp.o"
