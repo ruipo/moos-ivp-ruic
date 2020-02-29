@@ -17,3 +17,6 @@
 /Users/Rui/moos-ivp-ruic/build/src/pOdometry/CMakeFiles/rebuild_cache.dir
 /Users/Rui/moos-ivp-ruic/build/src/pOdometry/CMakeFiles/edit_cache.dir
 /Users/Rui/moos-ivp-ruic/build/src/pOdometry/CMakeFiles/pOdometry.dir
+/Users/Rui/moos-ivp-ruic/build/src/pLinSVPComm/CMakeFiles/rebuild_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/pLinSVPComm/CMakeFiles/edit_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/pLinSVPComm/CMakeFiles/pLinSVPComm.dir

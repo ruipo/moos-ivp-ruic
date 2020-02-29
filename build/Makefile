@@ -175,6 +175,19 @@ pOdometry/fast:
 	$(MAKE) -f src/pOdometry/CMakeFiles/pOdometry.dir/build.make src/pOdometry/CMakeFiles/pOdometry.dir/build
 .PHONY : pOdometry/fast
 
+#=============================================================================
+# Target rules for targets named pLinSVPComm
+
+# Build rule for target.
+pLinSVPComm: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pLinSVPComm
+.PHONY : pLinSVPComm
+
+# fast build rule for target.
+pLinSVPComm/fast:
+	$(MAKE) -f src/pLinSVPComm/CMakeFiles/pLinSVPComm.dir/build.make src/pLinSVPComm/CMakeFiles/pLinSVPComm.dir/build
+.PHONY : pLinSVPComm/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -188,6 +201,7 @@ help:
 	@echo "... pExampleApp"
 	@echo "... pPrimeFactor"
 	@echo "... pOdometry"
+	@echo "... pLinSVPComm"
 .PHONY : help
 
 
