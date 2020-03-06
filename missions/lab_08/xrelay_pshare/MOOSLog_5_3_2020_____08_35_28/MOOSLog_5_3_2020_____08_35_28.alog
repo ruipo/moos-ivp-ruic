@@ -1,0 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LOG FILE:       ./MOOSLog_5_3_2020_____08_35_28/MOOSLog_5_3_2020_____08_35_28.alog
+%% FILE OPENED ON  Wed Dec 31 19:00:00 1969
+%% LOGSTART               1583415328.02
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+0.659           LOGGER_DIRECTORY     pLogger         ./MOOSLog_5_3_2020_____08_35_28 
+0.722           DB_EVENT             MOOSDB_apple    connected=pShare 
+0.865           PLOGGER_STATUS       pLogger         AppErrorFlag=false,Uptime=0.864845,cpuload=0.7619,memory_kb=1168,memory_max_kb=1168,MOOSName=pLogger,Publishing="LOGGER_DIRECTORY,",Subscribing="LOGGER_RESTART,MOOS_DEBUG,MOOS_SYSTEM,PLOGGER_CMD,",LogAuxSrc=false 
