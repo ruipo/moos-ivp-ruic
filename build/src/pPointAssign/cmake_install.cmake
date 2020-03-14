@@ -1,4 +1,4 @@
-# Install script for directory: /Users/Rui/moos-ivp-ruic/src
+# Install script for directory: /Users/Rui/moos-ivp-ruic/src/pPointAssign
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -30,18 +30,5 @@ endif()
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for each subdirectory.
-  include("/Users/Rui/moos-ivp-ruic/build/src/lib_behaviors-test/cmake_install.cmake")
-  include("/Users/Rui/moos-ivp-ruic/build/src/pXRelayTest/cmake_install.cmake")
-  include("/Users/Rui/moos-ivp-ruic/build/src/pExampleApp/cmake_install.cmake")
-  include("/Users/Rui/moos-ivp-ruic/build/src/pPrimeFactor/cmake_install.cmake")
-  include("/Users/Rui/moos-ivp-ruic/build/src/pOdometry/cmake_install.cmake")
-  include("/Users/Rui/moos-ivp-ruic/build/src/pLinSVPComm/cmake_install.cmake")
-  include("/Users/Rui/moos-ivp-ruic/build/src/pPointAssign/cmake_install.cmake")
-  include("/Users/Rui/moos-ivp-ruic/build/src/pGenPath/cmake_install.cmake")
-
 endif()
 

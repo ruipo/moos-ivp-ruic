@@ -14,8 +14,10 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../src/CMakeLists.txt"
   "../src/lib_behaviors-test/CMakeLists.txt"
   "../src/pExampleApp/CMakeLists.txt"
+  "../src/pGenPath/CMakeLists.txt"
   "../src/pLinSVPComm/CMakeLists.txt"
   "../src/pOdometry/CMakeLists.txt"
+  "../src/pPointAssign/CMakeLists.txt"
   "../src/pPrimeFactor/CMakeLists.txt"
   "../src/pXRelayTest/CMakeLists.txt"
   "/Users/Rui/moos-ivp/build/MOOS/MOOSCore/MOOSConfig.cmake"
@@ -68,6 +70,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/pPrimeFactor/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/pOdometry/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/pLinSVPComm/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/pPointAssign/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/pGenPath/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -78,4 +82,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "src/pPrimeFactor/CMakeFiles/pPrimeFactor.dir/DependInfo.cmake"
   "src/pOdometry/CMakeFiles/pOdometry.dir/DependInfo.cmake"
   "src/pLinSVPComm/CMakeFiles/pLinSVPComm.dir/DependInfo.cmake"
+  "src/pPointAssign/CMakeFiles/pPointAssign.dir/DependInfo.cmake"
+  "src/pGenPath/CMakeFiles/pGenPath.dir/DependInfo.cmake"
   )

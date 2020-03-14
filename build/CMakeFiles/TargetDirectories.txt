@@ -20,3 +20,9 @@
 /Users/Rui/moos-ivp-ruic/build/src/pLinSVPComm/CMakeFiles/rebuild_cache.dir
 /Users/Rui/moos-ivp-ruic/build/src/pLinSVPComm/CMakeFiles/edit_cache.dir
 /Users/Rui/moos-ivp-ruic/build/src/pLinSVPComm/CMakeFiles/pLinSVPComm.dir
+/Users/Rui/moos-ivp-ruic/build/src/pPointAssign/CMakeFiles/rebuild_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/pPointAssign/CMakeFiles/edit_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/pPointAssign/CMakeFiles/pPointAssign.dir
+/Users/Rui/moos-ivp-ruic/build/src/pGenPath/CMakeFiles/rebuild_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/pGenPath/CMakeFiles/edit_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/pGenPath/CMakeFiles/pGenPath.dir
