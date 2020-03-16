@@ -14,13 +14,14 @@ Processconfig = ANTLER
 
   Run = MOOSDB          @ NewConsole = false
   Run = uXMS      @ NewConsole = true
-  Run = pMarineViewer   @ NewConsole = true
+  //Run = pMarineViewer   @ NewConsole = true
   Run = pPointAssign    @ NewConsole = true
   //Run = pLogger         @ NewConsole = false
   Run = pShare          @ NewConsole = false
   Run = pHostInfo       @ NewConsole = false
   Run = uFldShoreBroker @ NewConsole = false
   Run = uTimerScript    @ NewConsole = true
+  Run = pGenPath        @ NewConsole = true
 
 }
 
@@ -33,7 +34,7 @@ Processconfig = ANTLER
 
 ProcessConfig = uXMS
  {
-   VAR            = VISIT_POINT,VISIT_POINT_HENRY, VISIT_POINT_GILDA,UTS_PAUSE
+   VAR            = VISIT_POINT,VISIT_POINT_HENRY, VISIT_POINT_GILDA, UPDATES_V1, UPDATES_V2
    HISTORY_VAR    = VISIT_POINT_OUT
  }
 
@@ -121,7 +122,7 @@ ProcessConfig = pMarineViewer
    event = var=VISIT_POINT, val="lastpoint", time=15
  } 
 
-  //------------------------------------------
+//------------------------------------------
  // pPointAssign config block
 
  ProcessConfig = pPointAssign                                    
@@ -133,4 +134,17 @@ ProcessConfig = pMarineViewer
    VNAME=HENRY
    VNAME=GILDA
    ASSIGN_BY_REGION=false
+ } 
+
+//------------------------------------------
+ // pGenPath config block
+
+ ProcessConfig = pGenPath                                    
+ {                            
+
+   //AppTick   = 4
+   //CommsTick = 4
+
+   VNAME=HENRY
+   VNAME=GILDA
  } 

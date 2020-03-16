@@ -63,6 +63,11 @@ src/pGenPath/CMakeFiles/pGenPath.dir/GenPath.cpp.o: /Users/Rui/moos-ivp/MOOS/MOO
 src/pGenPath/CMakeFiles/pGenPath.dir/GenPath.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Utils/include/MOOS/libMOOS/Utils/ProcessConfigReader.h
 src/pGenPath/CMakeFiles/pGenPath.dir/GenPath.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Utils/include/MOOS/libMOOS/Utils/SafeList.h
 src/pGenPath/CMakeFiles/pGenPath.dir/GenPath.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/include/MOOS/libMOOS/MOOSLib.h
+src/pGenPath/CMakeFiles/pGenPath.dir/GenPath.cpp.o: /Users/Rui/moos-ivp/ivp/src/lib_geometry/XYObject.h
+src/pGenPath/CMakeFiles/pGenPath.dir/GenPath.cpp.o: /Users/Rui/moos-ivp/ivp/src/lib_geometry/XYPoint.h
+src/pGenPath/CMakeFiles/pGenPath.dir/GenPath.cpp.o: /Users/Rui/moos-ivp/ivp/src/lib_geometry/XYSegList.h
+src/pGenPath/CMakeFiles/pGenPath.dir/GenPath.cpp.o: /Users/Rui/moos-ivp/ivp/src/lib_mbutil/ColorPack.h
+src/pGenPath/CMakeFiles/pGenPath.dir/GenPath.cpp.o: /Users/Rui/moos-ivp/ivp/src/lib_mbutil/ColorParse.h
 src/pGenPath/CMakeFiles/pGenPath.dir/GenPath.cpp.o: /Users/Rui/moos-ivp/ivp/src/lib_mbutil/MBUtils.h
 
 src/pGenPath/CMakeFiles/pGenPath.dir/GenPath_Info.cpp.o: ../src/pGenPath/GenPath_Info.cpp

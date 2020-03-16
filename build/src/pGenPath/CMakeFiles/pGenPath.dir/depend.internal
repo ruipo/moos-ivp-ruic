@@ -64,6 +64,11 @@ src/pGenPath/CMakeFiles/pGenPath.dir/GenPath.cpp.o
  /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Utils/include/MOOS/libMOOS/Utils/ProcessConfigReader.h
  /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Utils/include/MOOS/libMOOS/Utils/SafeList.h
  /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/include/MOOS/libMOOS/MOOSLib.h
+ /Users/Rui/moos-ivp/ivp/src/lib_geometry/XYObject.h
+ /Users/Rui/moos-ivp/ivp/src/lib_geometry/XYPoint.h
+ /Users/Rui/moos-ivp/ivp/src/lib_geometry/XYSegList.h
+ /Users/Rui/moos-ivp/ivp/src/lib_mbutil/ColorPack.h
+ /Users/Rui/moos-ivp/ivp/src/lib_mbutil/ColorParse.h
  /Users/Rui/moos-ivp/ivp/src/lib_mbutil/MBUtils.h
 src/pGenPath/CMakeFiles/pGenPath.dir/GenPath_Info.cpp.o
  /Users/Rui/moos-ivp-ruic/src/pGenPath/GenPath_Info.cpp
