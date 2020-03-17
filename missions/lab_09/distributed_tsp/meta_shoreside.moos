@@ -34,8 +34,8 @@ Processconfig = ANTLER
 
 ProcessConfig = uXMS
  {
-   VAR            = VISIT_POINT,VISIT_POINT_HENRY, VISIT_POINT_GILDA, UPDATES_V1, UPDATES_V2
-   HISTORY_VAR    = VISIT_POINT_OUT
+   VAR            = VISIT_POINT,VISIT_POINT_HENRY, VISIT_POINT_GILDA
+   HISTORY_VAR    = VISIT_POINT
  }
 
 //--------------------------------------------------
@@ -43,8 +43,6 @@ ProcessConfig = uXMS
 
 ProcessConfig = uFldShoreBroker
 {
-  AppTick       = 1
-  CommsTick     = 1
 
   QBRIDGE  = DEPLOY, NODE_REPORT
   QBRIDGE  = STATION_KEEP, APPCAST_REQ
@@ -52,6 +50,9 @@ ProcessConfig = uFldShoreBroker
 
   BRIDGE   = src=VISIT_POINT_ALL, alias=VISTI_POINT
   BRIDGE   = src=VISIT_POINT_$V,  alias=VISIT_POINT
+
+  BRIDGE   = src=START_FTIMER_ALL, alias=START_FTIMER
+  BRIDGE   = src=START_FTIMER_$V,  alias=START_FTIMER
 
   BRIDGE   = src=START_TIMER_ALL, alias=START_TIMER
   BRIDGE   = src=START_TIMER_$V,  alias=START_TIMER
@@ -76,7 +77,7 @@ ProcessConfig = pMarineViewer
   vehicles_shape_scale = 1.5
   vehicles_name_mode   = names+shortmode
 
-  point_viewable_labels   = true
+  point_viewable_labels   = false
   polygon_viewable_labels = false
   appcast_viewable     = true
   appcast_color_scheme = indigo
@@ -89,7 +90,7 @@ ProcessConfig = pMarineViewer
 
   BUTTON_ONE   = DEPLOY  # DEPLOY_ALL=true 
   BUTTON_ONE   = MOOS_MANUAL_OVERRIDE_ALL=false 
-  BUTTON_ONE   = RETURN_ALL=false # STATION_KEEP_ALL=false # REFUEL_NEEDED_ALL=false # START_FTIMER_ALL=true
+  BUTTON_ONE   = RETURN_ALL=false # STATION_KEEP_ALL=false # REFUEL_NEEDED_ALL=false # START_FTIMER_ALL=true # MISSION_ALL=true
 
   BUTTON_TWO   = RETURN  # RETURN_ALL=true
   BUTTON_TWO   = STATION_KEEP_ALL=false # REFUEL_NEEDED_ALL=false
@@ -103,7 +104,8 @@ ProcessConfig = pMarineViewer
 
  //------------------------------------------
  ProcessConfig = uTimerScript                                    
- {                            
+ { 
+
    paused=true
    pause_var=UTS_PAUSE
 
@@ -111,15 +113,8 @@ ProcessConfig = pMarineViewer
    rand_var    = varname=YRND_VAL, min=-175, max=-25, key=at_post
 
    event = var=VISIT_POINT, val="firstpoint", time=0
-   event = var=VISIT_POINT, val="x=$[XRND_VAL], y=$[YRND_VAL], id=$[TCOUNT]", time=5, amt=1
-   event = var=VISIT_POINT, val="x=$[XRND_VAL], y=$[YRND_VAL], id=$[TCOUNT]", time=6, amt=1  
-   event = var=VISIT_POINT, val="x=$[XRND_VAL], y=$[YRND_VAL], id=$[TCOUNT]", time=7, amt=1
-   event = var=VISIT_POINT, val="x=$[XRND_VAL], y=$[YRND_VAL], id=$[TCOUNT]", time=8, amt=1 
-   event = var=VISIT_POINT, val="x=$[XRND_VAL], y=$[YRND_VAL], id=$[TCOUNT]", time=9, amt=1
-   event = var=VISIT_POINT, val="x=$[XRND_VAL], y=$[YRND_VAL], id=$[TCOUNT]", time=10, amt=1 
-   event = var=VISIT_POINT, val="x=$[XRND_VAL], y=$[YRND_VAL], id=$[TCOUNT]", time=11, amt=1
-   event = var=VISIT_POINT, val="x=$[XRND_VAL], y=$[YRND_VAL], id=$[TCOUNT]", time=12, amt=1 
-   event = var=VISIT_POINT, val="lastpoint", time=15
+   event = var=VISIT_POINT, val="x=$[XRND_VAL], y=$[YRND_VAL], id=$[TCOUNT]", time=0.5, amt=100
+   event = var=VISIT_POINT, val="lastpoint", time=1
  } 
 
 //------------------------------------------
@@ -128,23 +123,8 @@ ProcessConfig = pMarineViewer
  ProcessConfig = pPointAssign                                    
  {                            
 
-   //AppTick   = 4
-   //CommsTick = 4
-
    VNAME=HENRY
    VNAME=GILDA
-   ASSIGN_BY_REGION=false
+   ASSIGN_BY_REGION=true
  } 
 
-//------------------------------------------
- // pGenPath config block
-
- ProcessConfig = pGenPath                                    
- {                            
-
-   //AppTick   = 4
-   //CommsTick = 4
-
-   VNAME=HENRY
-   VNAME=GILDA
- } 

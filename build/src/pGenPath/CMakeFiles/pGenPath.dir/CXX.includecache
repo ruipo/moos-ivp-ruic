@@ -24,6 +24,20 @@ MOOS/libMOOS/MOOSLib.h
 vector
 -
 
+/Users/Rui/moos-ivp-ruic/src/pGenPath/GenPath_Info.h
+
+/Users/Rui/moos-ivp-ruic/src/pGenPath/main.cpp
+string
+-
+MBUtils.h
+/Users/Rui/moos-ivp-ruic/src/pGenPath/MBUtils.h
+ColorParse.h
+/Users/Rui/moos-ivp-ruic/src/pGenPath/ColorParse.h
+GenPath.h
+/Users/Rui/moos-ivp-ruic/src/pGenPath/GenPath.h
+GenPath_Info.h
+/Users/Rui/moos-ivp-ruic/src/pGenPath/GenPath_Info.h
+
 /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/App/include/MOOS/libMOOS/App/ClientDefines.h
 
 /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/App/include/MOOS/libMOOS/App/MOOSApp.h

@@ -2,7 +2,7 @@
 /*    NAME: ruic                                              */
 /*    ORGN: MIT                                             */
 /*    FILE: PointAssign.cpp                                        */
-/*    DATE:                                                 */
+/*    DATE: 03/17/2020                                                */
 /************************************************************/
 
 #include <iterator>
@@ -22,6 +22,9 @@ PointAssign::PointAssign()
   xpoint=0;
   ypoint=0;
   id=0;
+  msg_vec={};
+  pt_rec = 0;
+  pt_bc = 0;
 }
 
 //---------------------------------------------------------
@@ -32,6 +35,17 @@ PointAssign::~PointAssign()
 }
 
 //---------------------------------------------------------
+// Procedure: buildReport
+
+bool PointAssign::buildReport()
+{
+  m_msgs << "Number of points received " << pt_rec << endl;
+  m_msgs << "Number of points broadcasted: " << pt_bc << endl;
+ 
+  return(true);
+}
+
+//---------------------------------------------------------
 // Procedure: postViewPoint
 
 void PointAssign::postViewPoint(double x, double y, string label, string color)
@@ -39,7 +53,7 @@ void PointAssign::postViewPoint(double x, double y, string label, string color)
   XYPoint point(x, y); 
   point.set_label(label); 
   point.set_color("vertex", color); 
-  point.set_param("vertex_size", "2");
+  point.set_param("vertex_size", "5");
   string spec = point.get_spec();
 
   Notify("VIEW_POINT", spec); 
@@ -48,8 +62,13 @@ void PointAssign::postViewPoint(double x, double y, string label, string color)
 //---------------------------------------------------------
 // Procedure: OnNewMail
 
+// get incoming mail and put all msg in a vector
+
 bool PointAssign::OnNewMail(MOOSMSG_LIST &NewMail)
 {
+
+  AppCastingMOOSApp::OnNewMail(NewMail);
+
   num_vehs = veh_names.size();
 
   MOOSMSG_LIST::iterator p;
@@ -60,51 +79,14 @@ bool PointAssign::OnNewMail(MOOSMSG_LIST &NewMail)
     string key = msg.GetKey();
     
     if (key == "VISIT_POINT"){
-      Notify("UTS_PAUSE","true");
-      pointmsg = msg.GetString();
 
-      if(pointmsg=="firstpoint"){
-        out = pointmsg;
-      }
+      ptmsg = msg.GetString();
+      msg_vec.push_back(ptmsg);
 
-      else if(pointmsg=="lastpoint"){
-        out = pointmsg;
-      }
-
-      else{
-        xpointmsg = biteStringX(pointmsg, ',');
-        xpointprefix = biteStringX(xpointmsg, '=');
-        xpoint = stod(xpointmsg);
-
-        ypointmsg = biteStringX(pointmsg, ',');
-        ypointprefix = biteStringX(ypointmsg, '=');
-        ypoint = stod(ypointmsg);
-
-        idmsg = biteStringX(pointmsg, ',');
-        idprefix = biteStringX(idmsg, '=');
-        id = stod(idmsg);
-
-        out = "x="+to_string(xpoint)+", y="+to_string(ypoint)+", id="+to_string(id);
-        //Notify("VISIT_POINT_OUT",pointmsg);
-      }
-
+      pt_rec = pt_rec+1;
     }
+  }
 
-    
-
-
-#if 0 // Keep these around just for template
-    string key   = msg.GetKey();
-    string comm  = msg.GetCommunity();
-    double dval  = msg.GetDouble();
-    string sval  = msg.GetString(); 
-    string msrc  = msg.GetSource();
-    double mtime = msg.GetTime();
-    bool   mdbl  = msg.IsDouble();
-    bool   mstr  = msg.IsString();
-#endif
-   }
-	
    return(true);
 }
 
@@ -121,55 +103,140 @@ bool PointAssign::OnConnectToServer()
 // Procedure: Iterate()
 //            happens AppTick times per second
 
+//check if received "lastpoint"
+//if so, check assign_by_region
+//notify vehicles of their way points
+
 bool PointAssign::Iterate()
 { 
-  if(assign_by_reg){
+  AppCastingMOOSApp::Iterate();
 
-    if((out=="firstpoint") || (out=="lastpoint")){
-      v1out = "VISIT_POINT_"+veh_names[0];
-      v2out = "VISIT_POINT_"+veh_names[1];
-      Notify(v1out,out);
-      Notify(v2out,out);
-    }
+  if(ptmsg=="lastpoint" && !msg_vec.empty()){
+    cout << msg_vec.size() <<endl;
 
-    else if(xpoint>=87.5){
-      v2out = "VISIT_POINT_"+veh_names[1];
-      postViewPoint(xpoint, ypoint, to_string(id), colors[0]);
-      Notify(v2out,out);
+    if(assign_by_reg){
+
+      while(!msg_vec.empty()){
+
+        if(msg_vec.front()=="firstpoint"){
+          out = "firstpoint";
+          v1out = "VISIT_POINT_"+veh_names[0];
+          v2out = "VISIT_POINT_"+veh_names[1];
+          Notify(v1out,out);
+          Notify(v2out,out);
+          pt_bc = pt_bc + 1;
+          msg_vec.erase(msg_vec.begin());
+        }
+
+        else if(msg_vec.front()=="lastpoint"){
+          out = "lastpoint";
+          v1out = "VISIT_POINT_"+veh_names[0];
+          v2out = "VISIT_POINT_"+veh_names[1];
+          Notify(v1out,out);
+          Notify(v2out,out);
+          pt_bc = pt_bc + 1;
+          msg_vec.erase(msg_vec.begin());
+        }
+
+        else{
+          pointmsg = msg_vec.front();
+          xpointmsg = biteStringX(pointmsg, ',');
+          xpointprefix = biteStringX(xpointmsg, '=');
+          xpoint = stod(xpointmsg);
+
+          ypointmsg = biteStringX(pointmsg, ',');
+          ypointprefix = biteStringX(ypointmsg, '=');
+          ypoint = stod(ypointmsg);
+
+          idmsg = biteStringX(pointmsg, ',');
+          idprefix = biteStringX(idmsg, '=');
+          id = stod(idmsg);
+
+          out = "x="+to_string(xpoint)+", y="+to_string(ypoint)+", id="+to_string(id);
+
+          if(xpoint>=87.5){
+            v1out = "VISIT_POINT_"+veh_names[0];
+            postViewPoint(xpoint, ypoint, to_string(id), colors[0]);
+            Notify(v1out,out);
+            pt_bc = pt_bc + 1;
+          }
+          
+          else{
+            v2out = "VISIT_POINT_"+veh_names[1];
+            postViewPoint(xpoint, ypoint, to_string(id), colors[1]);
+            Notify(v2out,out);
+            pt_bc = pt_bc + 1;
+          }
+
+          msg_vec.erase(msg_vec.begin());
+        }
+      }
+
     }
 
     else{
-      v1out = "VISIT_POINT_"+veh_names[0];
-      postViewPoint(xpoint, ypoint, to_string(id), colors[1]);
-      Notify(v1out,out);
-    }
 
+      while(!msg_vec.empty()){
+
+        if(msg_vec.front()=="firstpoint"){
+          out = "firstpoint";
+          v1out = "VISIT_POINT_"+veh_names[0];
+          v2out = "VISIT_POINT_"+veh_names[1];
+          Notify(v1out,out);
+          Notify(v2out,out);
+          pt_bc = pt_bc + 1;
+          msg_vec.erase(msg_vec.begin());
+        }
+
+        else if(msg_vec.front()=="lastpoint"){
+          out = "lastpoint";
+          v1out = "VISIT_POINT_"+veh_names[0];
+          v2out = "VISIT_POINT_"+veh_names[1];
+          Notify(v1out,out);
+          Notify(v2out,out);
+          pt_bc = pt_bc + 1;
+          msg_vec.erase(msg_vec.begin());
+        }
+
+        else{
+          pointmsg = msg_vec.front();
+          xpointmsg = biteStringX(pointmsg, ',');
+          xpointprefix = biteStringX(xpointmsg, '=');
+          xpoint = stod(xpointmsg);
+
+          ypointmsg = biteStringX(pointmsg, ',');
+          ypointprefix = biteStringX(ypointmsg, '=');
+          ypoint = stod(ypointmsg);
+
+          idmsg = biteStringX(pointmsg, ',');
+          idprefix = biteStringX(idmsg, '=');
+          id = stod(idmsg);
+
+          out = "x="+to_string(xpoint)+", y="+to_string(ypoint)+", id="+to_string(id);
+
+          if((id%2)==0){
+            v1out = "VISIT_POINT_"+veh_names[0];
+            postViewPoint(xpoint, ypoint, to_string(id), colors[0]);
+            Notify(v1out,out);
+            pt_bc = pt_bc + 1;
+          }
+          
+          else{
+            v2out = "VISIT_POINT_"+veh_names[1];
+            postViewPoint(xpoint, ypoint, to_string(id), colors[1]);
+            Notify(v2out,out);
+            pt_bc = pt_bc + 1;
+          }
+
+          msg_vec.erase(msg_vec.begin());
+
+        }
+      }
+
+    }
   }
 
-  else{
-
-    if((out=="firstpoint") || (out=="lastpoint")){
-      v1out = "VISIT_POINT_"+veh_names[0];
-      v2out = "VISIT_POINT_"+veh_names[1];
-      Notify(v1out,out);
-      Notify(v2out,out);
-    }
-
-    else if((id%2)==0){
-      v1out = "VISIT_POINT_"+veh_names[0];
-      postViewPoint(xpoint, ypoint, to_string(id), colors[0]);
-      Notify(v1out,out);
-    }
-
-    else{
-      v2out = "VISIT_POINT_"+veh_names[1];
-      postViewPoint(xpoint, ypoint, to_string(id), colors[1]);
-      Notify(v2out,out);
-    }
-
-  }
-
-  Notify("UTS_PAUSE","false");
+  AppCastingMOOSApp::PostReport();
   return(true);
 }
 
@@ -179,6 +246,7 @@ bool PointAssign::Iterate()
 
 bool PointAssign::OnStartUp()
 { 
+  AppCastingMOOSApp::OnStartUp();
   Notify("UTS_PAUSE","true");
   list<string> sParams;
   m_MissionReader.EnableVerbatimQuoting(false);
@@ -241,6 +309,7 @@ bool PointAssign::OnStartUp()
 
 void PointAssign::RegisterVariables()
 {
+  AppCastingMOOSApp::RegisterVariables();
   Register("VISIT_POINT",0);
 }
 
