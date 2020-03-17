@@ -5,7 +5,7 @@ ServerHost = localhost
 ServerPort = 9000
 Community  = shoreside
 
-MOOSTimeWarp = 1
+MOOSTimeWarp = 20
 LatOrigin  = 43.825300 
 LongOrigin = -70.330400 
 
@@ -18,18 +18,29 @@ Processconfig = ANTLER
 
   Run = MOOSDB          @ NewConsole = false
   Run = uXMS      @ NewConsole = true
-  //Run = pMarineViewer   @ NewConsole = true
+  Run = pMarineViewer   @ NewConsole = true
   Run = pPointAssign    @ NewConsole = true
-  //Run = pLogger         @ NewConsole = false
+  Run = pLogger         @ NewConsole = false
   Run = pShare          @ NewConsole = false
   Run = pHostInfo       @ NewConsole = false
   Run = uFldShoreBroker @ NewConsole = false
   Run = uTimerScript    @ NewConsole = true
-  Run = pGenPath        @ NewConsole = true
+  //Run = pGenPath        @ NewConsole = true
 
 }
 
-//#include plug_pShare.moos
+//---------------------------------------------------------
+// pShare Config Block  (Created from Plugin)
+
+ProcessConfig = pShare
+{
+  AppTick    = 2
+  CommsTick  = 2
+
+  input = route =  localhost:9300
+}
+
+
 //--------------------------------------------------
 // pHostInfo configuration block from plugin
 
@@ -42,7 +53,28 @@ ProcessConfig = pHostInfo
 }
 
 
-//#include plug_pLogger.moos
+//--------------------------------------------------
+// pLogger Configuration Block (Created from Plugin)
+
+ProcessConfig = pLogger
+{
+  AppTick 	= 10
+  CommsTick 	= 10
+  
+  File		= LOG_SHORESIDE
+  PATH		= ./
+  AsyncLog 	= true
+  FileTimeStamp = true
+
+  // Log it all!!!!!
+  LogAuxSrc       = true
+  WildCardLogging = true 
+
+  WildCardOmitPattern = *_STATUS
+
+  CompressAlogs = false
+}
+
 
 //------------------------------------------
 // uXMS configuration  block

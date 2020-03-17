@@ -18,13 +18,13 @@ using namespace std;
 
 GenPath::GenPath()
 {
-  num_vehs=0;
+  //num_vehs=0;
   xpoint=0;
   ypoint=0;
   v1_vpx = {};
   v1_vpy = {};
-  v2_vpx = {};
-  v2_vpy = {};
+  //v2_vpx = {};
+  //v2_vpy = {};
 }
 
 //---------------------------------------------------------
@@ -67,7 +67,7 @@ bool GenPath::OnNewMail(MOOSMSG_LIST &NewMail)
 
     string key = msg.GetKey();
     
-    if (key == v1out){
+    if (key == "VISIT_POINT"){
       pointmsg1 = msg.GetString();
 
       if(pointmsg1=="firstpoint" || pointmsg1=="lastpoint"){
@@ -100,38 +100,38 @@ bool GenPath::OnNewMail(MOOSMSG_LIST &NewMail)
       }
     }
 
-    else if (key == v2out){
-      pointmsg2 = msg.GetString();
+    // else if (key == v2out){
+    //   pointmsg2 = msg.GetString();
 
-      if(pointmsg2=="firstpoint" || pointmsg2=="lastpoint"){
-        continue;
-      }
+    //   if(pointmsg2=="firstpoint" || pointmsg2=="lastpoint"){
+    //     continue;
+    //   }
 
-      else{
-        xpointmsg = biteStringX(pointmsg2, ',');
-        xpointprefix = biteStringX(xpointmsg, '=');
-        xpoint = stod(xpointmsg);
+    //   else{
+    //     xpointmsg = biteStringX(pointmsg2, ',');
+    //     xpointprefix = biteStringX(xpointmsg, '=');
+    //     xpoint = stod(xpointmsg);
         
 
-        ypointmsg = biteStringX(pointmsg2, ',');
-        ypointprefix = biteStringX(ypointmsg, '=');
-        ypoint = stod(ypointmsg);
+    //     ypointmsg = biteStringX(pointmsg2, ',');
+    //     ypointprefix = biteStringX(ypointmsg, '=');
+    //     ypoint = stod(ypointmsg);
 
-        if(v2_vpx.empty() && v2_vpy.empty()){
-          v2_vpx.push_back(xpoint);
-          v2_vpy.push_back(ypoint);
-        }
+    //     if(v2_vpx.empty() && v2_vpy.empty()){
+    //       v2_vpx.push_back(xpoint);
+    //       v2_vpy.push_back(ypoint);
+    //     }
 
-        else if(xpoint==v2_vpx.back() && ypoint==v2_vpy.back()){
-          continue;
-        }
+    //     else if(xpoint==v2_vpx.back() && ypoint==v2_vpy.back()){
+    //       continue;
+    //     }
 
-        else{
-          v2_vpx.push_back(xpoint);
-          v2_vpy.push_back(ypoint);
-        }
-      }
-    }
+    //     else{
+    //       v2_vpx.push_back(xpoint);
+    //       v2_vpy.push_back(ypoint);
+    //     }
+    //   }
+    // }
 
    }
 	
@@ -143,7 +143,7 @@ bool GenPath::OnNewMail(MOOSMSG_LIST &NewMail)
 
 bool GenPath::OnConnectToServer()
 {
-   //RegisterVariables();
+   RegisterVariables();
    return(true);
 }
 
@@ -155,8 +155,8 @@ bool GenPath::Iterate()
 {
   if(pointmsg1=="lastpoint" && !v1_vpx.empty()){
 
-    double currentx = 0;
-    double currenty = 0;
+    double currentx = startx;
+    double currenty = starty;
     XYSegList v1_seglist;
     v1_seglist.add_vertex(currentx,currenty);
 
@@ -174,33 +174,33 @@ bool GenPath::Iterate()
     //cout << v1_seglist.get_spec() << endl;
     string updates_str = "points = ";
     updates_str += v1_seglist.get_spec();
-    Notify("UPDATES_V1", updates_str);
+    Notify("WPT_UPDATES", updates_str);
 
   }
 
-  if(pointmsg2=="lastpoint" && !v2_vpx.empty()){
+  // if(pointmsg2=="lastpoint" && !v2_vpx.empty()){
 
-    double currentx = 0;
-    double currenty = 0;
-    XYSegList v2_seglist;
-    v2_seglist.add_vertex(currentx,currenty);
+  //   double currentx = 0;
+  //   double currenty = 0;
+  //   XYSegList v2_seglist;
+  //   v2_seglist.add_vertex(currentx,currenty);
 
-    //cout << v2_vpx.size() << endl;
+  //   //cout << v2_vpx.size() << endl;
 
-    while(!v2_vpx.empty()){
+  //   while(!v2_vpx.empty()){
 
-      int arg = MinDist(currentx,currenty,v2_vpx,v2_vpy);
-      currentx = v2_vpx[arg];
-      currenty = v2_vpy[arg];
-      v2_seglist.add_vertex(currentx,currenty);
-      v2_vpx.erase (v2_vpx.begin()+arg);
-      v2_vpy.erase (v2_vpy.begin()+arg);
-    }
-    //cout << v2_seglist.get_spec() << endl;
-    string updates_str = "points = ";
-    updates_str += v2_seglist.get_spec();
-    Notify("UPDATES_V2", updates_str);
-  }
+  //     int arg = MinDist(currentx,currenty,v2_vpx,v2_vpy);
+  //     currentx = v2_vpx[arg];
+  //     currenty = v2_vpy[arg];
+  //     v2_seglist.add_vertex(currentx,currenty);
+  //     v2_vpx.erase (v2_vpx.begin()+arg);
+  //     v2_vpy.erase (v2_vpy.begin()+arg);
+  //   }
+  //   //cout << v2_seglist.get_spec() << endl;
+  //   string updates_str = "points = ";
+  //   updates_str += v2_seglist.get_spec();
+  //   Notify("UPDATES_V2", updates_str);
+  // }
 
   return(true);
 }
@@ -220,14 +220,18 @@ bool GenPath::OnStartUp()
       string param = tolower(biteStringX(line, '='));
       string value = line;
       
-      if(tolower(param) == tolower("VNAME")) {
-        veh_names.push_back(value);
+      if(tolower(param) == tolower("START_X")) {
+        startx = stod(line);
+      }
+
+      if(tolower(param) == tolower("START_Y")) {
+        starty = stod(line);
       }
     }
   }
   
-  v1out = "VISIT_POINT_"+veh_names[0];
-  v2out = "VISIT_POINT_"+veh_names[1];
+  // v1out = "VISIT_POINT_"+veh_names[0];
+  // v2out = "VISIT_POINT_"+veh_names[1];
   RegisterVariables();	
   return(true);
 }
@@ -237,8 +241,8 @@ bool GenPath::OnStartUp()
 
 void GenPath::RegisterVariables()
 {
-  Register(v1out, 0);
-  Register(v2out, 0);
+  Register("VISIT_POINT", 0);
+  //Register(v2out, 0);
 
 }
 

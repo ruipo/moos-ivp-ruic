@@ -28,22 +28,24 @@ class GenPath : public CMOOSApp
    void RegisterVariables();
 
  private: // Configuration variables
- 	std::string veh_name;
+ 	double startx;
+ 	double starty;
+ 	//std::string veh_name;
 
  private: // State variables
 
 	 std::vector<double> v1_vpx;
 	 std::vector<double> v1_vpy;
-	 std::vector<double> v2_vpx;
-	 std::vector<double> v2_vpy;
+	 //std::vector<double> v2_vpx;
+	 //std::vector<double> v2_vpy;
 
-	 std::vector<std::string> veh_names;
- 	 int num_vehs;
- 	 std::string v1out;
- 	 std::string v2out;
+	 //std::vector<std::string> veh_names;
+ 	 //int num_vehs;
+ 	 //std::string v1out;
+ 	 //std::string v2out;
 
  	 std::string pointmsg1;
- 	 std::string pointmsg2;
+ 	 //std::string pointmsg2;
  	 std::string xpointmsg;
  	 std::string xpointprefix;
  	 double xpoint;

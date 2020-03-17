@@ -1,0 +1,12 @@
+//------------------------------------------
+ // pGenPath config block
+
+ ProcessConfig = pGenPath                                    
+ {                            
+
+   //AppTick   = 4
+   //CommsTick = 4
+
+   START_X=$(START_XPOS)
+   START_Y=$(START_YPOS)
+ } 

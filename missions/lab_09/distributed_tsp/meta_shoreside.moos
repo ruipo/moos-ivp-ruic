@@ -14,20 +14,20 @@ Processconfig = ANTLER
 
   Run = MOOSDB          @ NewConsole = false
   Run = uXMS      @ NewConsole = true
-  //Run = pMarineViewer   @ NewConsole = true
+  Run = pMarineViewer   @ NewConsole = true
   Run = pPointAssign    @ NewConsole = true
-  //Run = pLogger         @ NewConsole = false
+  Run = pLogger         @ NewConsole = false
   Run = pShare          @ NewConsole = false
   Run = pHostInfo       @ NewConsole = false
   Run = uFldShoreBroker @ NewConsole = false
   Run = uTimerScript    @ NewConsole = true
-  Run = pGenPath        @ NewConsole = true
+  //Run = pGenPath        @ NewConsole = true
 
 }
 
-//#include plug_pShare.moos
+#include plug_pShare.moos
 #include plug_pHostInfo.moos
-//#include plug_pLogger.moos
+#include plug_pLogger.moos
 
 //------------------------------------------
 // uXMS configuration  block
