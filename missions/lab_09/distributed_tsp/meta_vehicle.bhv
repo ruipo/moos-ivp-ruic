@@ -23,7 +23,6 @@ set MODE = RETURNING {
   RETURN = true
 } 
 
-
 set MODE = REFUEL-NEEDED {
   MODE = ACTIVE
   REFUEL_NEEDED = true
@@ -43,35 +42,15 @@ Behavior = BHV_Waypoint
   updates   = WPT_UPDATES
   condition = MODE==ON_MISSION
   condition = REFUEL_NEEDED=false
-  endflag   = MODE==RETURNING
+  condition = RETURN=false
+  endflag   = RETURN=true
   perpetual = true
 
       speed = 1.2
      radius = 3.0
   nm_radius = 15.0
-     //points = $(START_POS)
        lead = 8
 }
-  
-//----------------------------------------------
-// Behavior = BHV_Loiter
-// {
-//   name      = loiter
-//   pwt       = 100
-//   condition = MODE==LOITERING
-
-//    post_suffix = A
-//          speed = 1.3
-//      clockwise = false
-//         radius = 8.0
-//      nm_radius = 15.0
-//        polygon = radial::$(LOITER_POS), radius=20, pts=8, snap=1, label=$(VNAME)_LOITER
-
-//   visual_hints = nextpt_color=white, nextpt_lcolor=khaki
-//   visual_hints = edge_color=orange, vertex_color=white
-//   visual_hints = edge_size=1, vertex_size=2
-// }
-
 
 //----------------------------------------------
 Behavior = BHV_Waypoint
@@ -108,7 +87,7 @@ Behavior = BHV_Waypoint
        lead = 8
 }
 
-//----------------------------------------------
+//---------------------------------------------- (TIME NEEDED TO REFUEL)
 Behavior = BHV_Timer
 {
  // General Behavior Parameters
@@ -116,7 +95,7 @@ Behavior = BHV_Timer
  name         = rtimer           // default
  condition    = START_TIMER=true
  duration     = 60                  // example
- endflag      = LOITER=true         // example
+ endflag      = MISSION=true         // example
  endflag      = STATION_KEEP=false
  endflag      = START_TIMER=false
  endflag      = START_FTIMER=true
@@ -128,7 +107,7 @@ Behavior = BHV_Timer
  // None
 }
 
-//----------------------------------------------
+//---------------------------------------------- (MISSION TIMER - TIME BETWEEN REFUELS)
 Behavior = BHV_Timer
 {
  // General Behavior Parameters

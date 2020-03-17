@@ -9,9 +9,10 @@
 #define PointAssign_HEADER
 
 #include "MOOS/libMOOS/MOOSLib.h"
+#include "MOOS/libMOOS/Thirdparty/AppCasting/AppCastingMOOSApp.h"
 #include <vector>
 
-class PointAssign : public CMOOSApp
+class PointAssign : public AppCastingMOOSApp
 {
  public:
    PointAssign();
@@ -23,6 +24,7 @@ class PointAssign : public CMOOSApp
    bool OnConnectToServer();
    bool OnStartUp();
    void postViewPoint(double x, double y, std::string label, std::string color);
+   bool buildReport();
 
  protected:
    void RegisterVariables();
@@ -34,6 +36,9 @@ class PointAssign : public CMOOSApp
 
  private: // State variables
 
+ 	int pt_rec;
+ 	int pt_bc;
+ 	std::string ptmsg;
  	std::string pointmsg;
  	std::string xpointmsg;
  	std::string xpointprefix;
@@ -45,13 +50,14 @@ class PointAssign : public CMOOSApp
  	std::string idprefix;
  	int id;
 
+ 	std::vector<std::string> msg_vec;
  	std::string v1out;
  	std::string v2out;
  	std::string out;
 
  	std::vector<std::string> veh_names;
  	int num_vehs;
- 	std::vector<std::string> colors = {"red","white"};
+ 	std::vector<std::string> colors = {"yellow","red"};
 
 };
 

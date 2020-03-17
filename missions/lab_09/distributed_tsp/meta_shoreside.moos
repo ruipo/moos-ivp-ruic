@@ -13,14 +13,14 @@ Processconfig = ANTLER
   MSBetweenLaunches = 100
 
   Run = MOOSDB          @ NewConsole = false
-  Run = uXMS      @ NewConsole = true
-  Run = pMarineViewer   @ NewConsole = true
-  Run = pPointAssign    @ NewConsole = true
+  //Run = uXMS      @ NewConsole = true
+  Run = pMarineViewer   @ NewConsole = false
+  Run = pPointAssign    @ NewConsole = false
   Run = pLogger         @ NewConsole = false
   Run = pShare          @ NewConsole = false
   Run = pHostInfo       @ NewConsole = false
   Run = uFldShoreBroker @ NewConsole = false
-  Run = uTimerScript    @ NewConsole = true
+  Run = uTimerScript    @ NewConsole = false
   //Run = pGenPath        @ NewConsole = true
 
 }
@@ -122,7 +122,6 @@ ProcessConfig = pMarineViewer
 
  ProcessConfig = pPointAssign                                    
  {                            
-
    VNAME=HENRY
    VNAME=GILDA
    ASSIGN_BY_REGION=true

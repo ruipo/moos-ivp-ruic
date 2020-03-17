@@ -12,7 +12,7 @@ Processconfig = ANTLER
   MSBetweenLaunches = 50
    
   Run = MOOSDB             @ NewConsole = false
-  Run = uXMS      @ NewConsole = true
+  //Run = uXMS      @ NewConsole = true
   Run = uSimMarine         @ NewConsole = false
   Run = pLogger            @ NewConsole = false
   Run = pNodeReporter      @ NewConsole = false
@@ -22,7 +22,7 @@ Processconfig = ANTLER
   Run = pShare             @ NewConsole = false
   Run = pHostInfo          @ NewConsole = false
   Run = uFldNodeBroker     @ NewConsole = false
-  Run = pGenPath           @ NewConsole = true
+  Run = pGenPath           @ NewConsole = false
 }
  
 #include plug_uSimMarine.moos
