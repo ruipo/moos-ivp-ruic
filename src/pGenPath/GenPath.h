@@ -32,13 +32,14 @@ class GenPath : public AppCastingMOOSApp
  private: // Configuration variables
  	double startx;
  	double starty;
+ 	double visit_radius = 5;
 
  private: // State variables
 
 	 std::vector<double> v1_vpx;
 	 std::vector<double> v1_vpy;
-    int pt_rec;
-    int pt_planned;
+   int pt_rec;
+   int pt_planned;
 
  	 std::string pointmsg1;
  	 std::string xpointmsg;
@@ -47,6 +48,11 @@ class GenPath : public AppCastingMOOSApp
  	 std::string ypointmsg;
  	 std::string ypointprefix;
  	 double ypoint;
+
+ 	 std::string xlocmsg;
+ 	 std::string ylocmsg;
+ 	 double xloc;
+ 	 double yloc;
 
 };
 

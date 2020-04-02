@@ -25,6 +25,8 @@ GenPath::GenPath()
   v1_vpy = {};
   pt_rec = 0;
   pt_planned = 0;
+  xloc=0;
+  yloc=0;
 }
 
 //---------------------------------------------------------
@@ -115,6 +117,20 @@ bool GenPath::OnNewMail(MOOSMSG_LIST &NewMail)
     }
 
    }
+
+   if (key == "NAV_X"){
+    xlocmsg = msg.GetString();
+
+
+
+   }
+
+   if (key == "NAV_Y"){
+    ylocmsg = msg.GetString();
+
+
+
+   }
 	
    return(true);
 }
@@ -187,6 +203,10 @@ bool GenPath::OnStartUp()
       if(tolower(param) == tolower("START_Y")) {
         starty = stod(line);
       }
+
+      if(tolower(param) == tolower("VISIT_RADIUS")) {
+        visit_radius = stod(line);
+      }
     }
   }
   
@@ -202,6 +222,8 @@ void GenPath::RegisterVariables()
   AppCastingMOOSApp::RegisterVariables();
 
   Register("VISIT_POINT", 0);
+  Register("NAV_X", 0);
+  Register("NAV_Y", 0);
 
 }
 
