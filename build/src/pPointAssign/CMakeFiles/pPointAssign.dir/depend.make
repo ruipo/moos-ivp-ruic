@@ -23,6 +23,8 @@ src/pPointAssign/CMakeFiles/pPointAssign.dir/PointAssign.cpp.o: /Users/Rui/moos-
 src/pPointAssign/CMakeFiles/pPointAssign.dir/PointAssign.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Comms/include/MOOS/libMOOS/Comms/MulticastNode.h
 src/pPointAssign/CMakeFiles/pPointAssign.dir/PointAssign.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Comms/include/MOOS/libMOOS/Comms/ServerAudit.h
 src/pPointAssign/CMakeFiles/pPointAssign.dir/PointAssign.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Comms/include/MOOS/libMOOS/Comms/SuicidalSleeper.h
+src/pPointAssign/CMakeFiles/pPointAssign.dir/PointAssign.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/AppCasting/include/MOOS/libMOOS/Thirdparty/AppCasting/AppCast.h
+src/pPointAssign/CMakeFiles/pPointAssign.dir/PointAssign.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/AppCasting/include/MOOS/libMOOS/Thirdparty/AppCasting/AppCastingMOOSApp.h
 src/pPointAssign/CMakeFiles/pPointAssign.dir/PointAssign.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/PocoBits/include/MOOS/libMOOS/Thirdparty/PocoBits/Bugcheck.h
 src/pPointAssign/CMakeFiles/pPointAssign.dir/PointAssign.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/PocoBits/include/MOOS/libMOOS/Thirdparty/PocoBits/Config.h
 src/pPointAssign/CMakeFiles/pPointAssign.dir/PointAssign.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/PocoBits/include/MOOS/libMOOS/Thirdparty/PocoBits/Event.h
@@ -97,6 +99,8 @@ src/pPointAssign/CMakeFiles/pPointAssign.dir/main.cpp.o: /Users/Rui/moos-ivp/MOO
 src/pPointAssign/CMakeFiles/pPointAssign.dir/main.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Comms/include/MOOS/libMOOS/Comms/MulticastNode.h
 src/pPointAssign/CMakeFiles/pPointAssign.dir/main.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Comms/include/MOOS/libMOOS/Comms/ServerAudit.h
 src/pPointAssign/CMakeFiles/pPointAssign.dir/main.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Comms/include/MOOS/libMOOS/Comms/SuicidalSleeper.h
+src/pPointAssign/CMakeFiles/pPointAssign.dir/main.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/AppCasting/include/MOOS/libMOOS/Thirdparty/AppCasting/AppCast.h
+src/pPointAssign/CMakeFiles/pPointAssign.dir/main.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/AppCasting/include/MOOS/libMOOS/Thirdparty/AppCasting/AppCastingMOOSApp.h
 src/pPointAssign/CMakeFiles/pPointAssign.dir/main.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/PocoBits/include/MOOS/libMOOS/Thirdparty/PocoBits/Bugcheck.h
 src/pPointAssign/CMakeFiles/pPointAssign.dir/main.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/PocoBits/include/MOOS/libMOOS/Thirdparty/PocoBits/Config.h
 src/pPointAssign/CMakeFiles/pPointAssign.dir/main.cpp.o: /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/PocoBits/include/MOOS/libMOOS/Thirdparty/PocoBits/Event.h

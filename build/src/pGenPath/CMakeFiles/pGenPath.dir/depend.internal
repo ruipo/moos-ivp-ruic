@@ -24,6 +24,8 @@ src/pGenPath/CMakeFiles/pGenPath.dir/GenPath.cpp.o
  /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Comms/include/MOOS/libMOOS/Comms/MulticastNode.h
  /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Comms/include/MOOS/libMOOS/Comms/ServerAudit.h
  /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Comms/include/MOOS/libMOOS/Comms/SuicidalSleeper.h
+ /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/AppCasting/include/MOOS/libMOOS/Thirdparty/AppCasting/AppCast.h
+ /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/AppCasting/include/MOOS/libMOOS/Thirdparty/AppCasting/AppCastingMOOSApp.h
  /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/PocoBits/include/MOOS/libMOOS/Thirdparty/PocoBits/Bugcheck.h
  /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/PocoBits/include/MOOS/libMOOS/Thirdparty/PocoBits/Config.h
  /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/PocoBits/include/MOOS/libMOOS/Thirdparty/PocoBits/Event.h
@@ -99,6 +101,8 @@ src/pGenPath/CMakeFiles/pGenPath.dir/main.cpp.o
  /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Comms/include/MOOS/libMOOS/Comms/MulticastNode.h
  /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Comms/include/MOOS/libMOOS/Comms/ServerAudit.h
  /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Comms/include/MOOS/libMOOS/Comms/SuicidalSleeper.h
+ /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/AppCasting/include/MOOS/libMOOS/Thirdparty/AppCasting/AppCast.h
+ /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/AppCasting/include/MOOS/libMOOS/Thirdparty/AppCasting/AppCastingMOOSApp.h
  /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/PocoBits/include/MOOS/libMOOS/Thirdparty/PocoBits/Bugcheck.h
  /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/PocoBits/include/MOOS/libMOOS/Thirdparty/PocoBits/Config.h
  /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/Thirdparty/PocoBits/include/MOOS/libMOOS/Thirdparty/PocoBits/Event.h

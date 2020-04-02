@@ -1,0 +1,18 @@
+//--------------------------------------------------
+// pLogger Configuration Block
+
+ProcessConfig = pLogger
+{
+  AppTick       = 4
+  CommsTick     = 4
+  
+  File          = LOG_SHORESIDE
+  PATH          = ./
+
+  //SyncLog       = true @ 0.2
+  AsyncLog      = true
+  FileTimeStamp = true
+
+  // Log it all!!!!!
+  WildCardLogging = true 
+}

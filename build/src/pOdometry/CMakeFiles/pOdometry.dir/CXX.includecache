@@ -20,6 +20,18 @@ cmath
 MOOS/libMOOS/Thirdparty/AppCasting/AppCastingMOOSApp.h
 /Users/Rui/moos-ivp-ruic/src/pOdometry/MOOS/libMOOS/Thirdparty/AppCasting/AppCastingMOOSApp.h
 
+/Users/Rui/moos-ivp-ruic/src/pOdometry/Odometry_Info.cpp
+cstdlib
+-
+iostream
+-
+Odometry_Info.h
+/Users/Rui/moos-ivp-ruic/src/pOdometry/Odometry_Info.h
+ColorParse.h
+/Users/Rui/moos-ivp-ruic/src/pOdometry/ColorParse.h
+ReleaseInfo.h
+/Users/Rui/moos-ivp-ruic/src/pOdometry/ReleaseInfo.h
+
 /Users/Rui/moos-ivp-ruic/src/pOdometry/Odometry_Info.h
 
 /Users/Rui/moos-ivp-ruic/src/pOdometry/main.cpp
@@ -478,5 +490,9 @@ string
 set
 -
 time.h
+-
+
+/Users/Rui/moos-ivp/ivp/src/lib_mbutil/ReleaseInfo.h
+string
 -
 

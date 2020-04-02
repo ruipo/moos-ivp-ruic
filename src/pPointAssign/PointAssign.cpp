@@ -247,7 +247,7 @@ bool PointAssign::Iterate()
 bool PointAssign::OnStartUp()
 { 
   AppCastingMOOSApp::OnStartUp();
-  Notify("UTS_PAUSE","true");
+  //Notify("UTS_PAUSE","true");
   list<string> sParams;
   m_MissionReader.EnableVerbatimQuoting(false);
   if(m_MissionReader.GetConfiguration(GetAppName(), sParams)) {
@@ -300,7 +300,7 @@ bool PointAssign::OnStartUp()
   }
   
   RegisterVariables();
-  Notify("UTS_PAUSE","false");
+  //Notify("UTS_PAUSE","false");
   return(true);
 }
 

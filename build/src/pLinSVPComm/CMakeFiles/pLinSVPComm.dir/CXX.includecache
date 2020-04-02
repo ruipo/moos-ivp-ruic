@@ -28,6 +28,32 @@ cmath
 vector
 -
 
+/Users/Rui/moos-ivp-ruic/src/pLinSVPComm/LinSVPComm_Info.cpp
+cstdlib
+-
+iostream
+-
+LinSVPComm_Info.h
+/Users/Rui/moos-ivp-ruic/src/pLinSVPComm/LinSVPComm_Info.h
+ColorParse.h
+/Users/Rui/moos-ivp-ruic/src/pLinSVPComm/ColorParse.h
+ReleaseInfo.h
+/Users/Rui/moos-ivp-ruic/src/pLinSVPComm/ReleaseInfo.h
+
+/Users/Rui/moos-ivp-ruic/src/pLinSVPComm/LinSVPComm_Info.h
+
+/Users/Rui/moos-ivp-ruic/src/pLinSVPComm/main.cpp
+string
+-
+MBUtils.h
+/Users/Rui/moos-ivp-ruic/src/pLinSVPComm/MBUtils.h
+ColorParse.h
+/Users/Rui/moos-ivp-ruic/src/pLinSVPComm/ColorParse.h
+LinSVPComm.h
+/Users/Rui/moos-ivp-ruic/src/pLinSVPComm/LinSVPComm.h
+LinSVPComm_Info.h
+/Users/Rui/moos-ivp-ruic/src/pLinSVPComm/LinSVPComm_Info.h
+
 /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/App/include/MOOS/libMOOS/App/ClientDefines.h
 
 /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/App/include/MOOS/libMOOS/App/MOOSApp.h
@@ -564,6 +590,12 @@ MOOS/libMOOS/App/MOOSApp.h
 MOOS/libMOOS/App/MOOSInstrument.h
 /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/include/MOOS/libMOOS/MOOS/libMOOS/App/MOOSInstrument.h
 
+/Users/Rui/moos-ivp/ivp/src/lib_mbutil/ColorParse.h
+vector
+-
+string
+-
+
 /Users/Rui/moos-ivp/ivp/src/lib_mbutil/MBUtils.h
 vector
 -
@@ -572,5 +604,9 @@ string
 set
 -
 time.h
+-
+
+/Users/Rui/moos-ivp/ivp/src/lib_mbutil/ReleaseInfo.h
+string
 -
 

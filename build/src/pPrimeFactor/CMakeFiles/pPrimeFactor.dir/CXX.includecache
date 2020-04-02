@@ -50,6 +50,32 @@ cstdint
 PrimeEntry.h
 /Users/Rui/moos-ivp-ruic/src/pPrimeFactor/PrimeEntry.h
 
+/Users/Rui/moos-ivp-ruic/src/pPrimeFactor/PrimeFactor_Info.cpp
+cstdlib
+-
+iostream
+-
+PrimeFactor_Info.h
+/Users/Rui/moos-ivp-ruic/src/pPrimeFactor/PrimeFactor_Info.h
+ColorParse.h
+/Users/Rui/moos-ivp-ruic/src/pPrimeFactor/ColorParse.h
+ReleaseInfo.h
+/Users/Rui/moos-ivp-ruic/src/pPrimeFactor/ReleaseInfo.h
+
+/Users/Rui/moos-ivp-ruic/src/pPrimeFactor/PrimeFactor_Info.h
+
+/Users/Rui/moos-ivp-ruic/src/pPrimeFactor/main.cpp
+string
+-
+MBUtils.h
+/Users/Rui/moos-ivp-ruic/src/pPrimeFactor/MBUtils.h
+ColorParse.h
+/Users/Rui/moos-ivp-ruic/src/pPrimeFactor/ColorParse.h
+PrimeFactor.h
+/Users/Rui/moos-ivp-ruic/src/pPrimeFactor/PrimeFactor.h
+PrimeFactor_Info.h
+/Users/Rui/moos-ivp-ruic/src/pPrimeFactor/PrimeFactor_Info.h
+
 /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/App/include/MOOS/libMOOS/App/ClientDefines.h
 
 /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/App/include/MOOS/libMOOS/App/MOOSApp.h
@@ -586,6 +612,12 @@ MOOS/libMOOS/App/MOOSApp.h
 MOOS/libMOOS/App/MOOSInstrument.h
 /Users/Rui/moos-ivp/MOOS/MOOSCore/Core/libMOOS/include/MOOS/libMOOS/MOOS/libMOOS/App/MOOSInstrument.h
 
+/Users/Rui/moos-ivp/ivp/src/lib_mbutil/ColorParse.h
+vector
+-
+string
+-
+
 /Users/Rui/moos-ivp/ivp/src/lib_mbutil/MBUtils.h
 vector
 -
@@ -594,5 +626,9 @@ string
 set
 -
 time.h
+-
+
+/Users/Rui/moos-ivp/ivp/src/lib_mbutil/ReleaseInfo.h
+string
 -
 

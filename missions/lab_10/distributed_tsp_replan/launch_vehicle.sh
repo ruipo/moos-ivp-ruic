@@ -9,9 +9,8 @@ VNAME=$(id -un)
 
 IP_ADDR=""
 MOOS_PORT="9001"
-PSHARE_PORT="9201"
+PSHARE_PORT="9301"
 SHORE="localhost:9300"
-SHORE_LISTEN="9200"
 GUI="yes"
 
 #-------------------------------------------------------
@@ -70,7 +69,8 @@ done
 #  Part 3: Create the .moos and .bhv files. 
 #-------------------------------------------------------
 
-FULL_VNAME=$VNAME"@"$HOSTNAME
+#FULL_VNAME=$VNAME"@"$HOSTNAME
+FULL_VNAME=$VNAME
 WPT_COLOR="light_blue"
 
 # Generate a random start position in range x=[0,180], y=[0,-50]
@@ -84,7 +84,8 @@ LOITER_POS="x=$X_LOITER_POS,y=$Y_LOITER_POS"
 
 nsplug meta_vehicle.moos targ_$FULL_VNAME.moos -f WARP=$TIME_WARP  \
     VNAME=$FULL_VNAME  VPORT=$MOOS_PORT  PSHARE_PORT=$PSHARE_PORT  \
-    START_POS=$START_POS SHORE=$SHORE IP_ADDR=$IP_ADDR
+    START_POS=$START_POS SHORE=$SHORE IP_ADDR=$IP_ADDR 						 \
+    START_XPOS="$X_START_POS"     START_YPOS="$Y_START_POS"        
 
 nsplug meta_vehicle.bhv targ_$FULL_VNAME.bhv -f VNAME=$FULL_VNAME  \
     START_POS=$START_POS LOITER_POS=$LOITER_POS       
