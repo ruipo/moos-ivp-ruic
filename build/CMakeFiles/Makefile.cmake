@@ -76,6 +76,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "src/lib_behaviors-test/CMakeFiles/BHV_ZigLeg.dir/DependInfo.cmake"
+  "src/lib_behaviors-test/CMakeFiles/BHV_Pulse.dir/DependInfo.cmake"
   "src/lib_behaviors-test/CMakeFiles/BHV_SimpleWaypoint.dir/DependInfo.cmake"
   "src/pXRelayTest/CMakeFiles/pXRelayTest.dir/DependInfo.cmake"
   "src/pExampleApp/CMakeFiles/pExampleApp.dir/DependInfo.cmake"

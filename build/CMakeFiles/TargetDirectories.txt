@@ -2,6 +2,8 @@
 /Users/Rui/moos-ivp-ruic/build/CMakeFiles/edit_cache.dir
 /Users/Rui/moos-ivp-ruic/build/src/CMakeFiles/rebuild_cache.dir
 /Users/Rui/moos-ivp-ruic/build/src/CMakeFiles/edit_cache.dir
+/Users/Rui/moos-ivp-ruic/build/src/lib_behaviors-test/CMakeFiles/BHV_ZigLeg.dir
+/Users/Rui/moos-ivp-ruic/build/src/lib_behaviors-test/CMakeFiles/BHV_Pulse.dir
 /Users/Rui/moos-ivp-ruic/build/src/lib_behaviors-test/CMakeFiles/rebuild_cache.dir
 /Users/Rui/moos-ivp-ruic/build/src/lib_behaviors-test/CMakeFiles/edit_cache.dir
 /Users/Rui/moos-ivp-ruic/build/src/lib_behaviors-test/CMakeFiles/BHV_SimpleWaypoint.dir
