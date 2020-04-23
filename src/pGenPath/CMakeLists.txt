@@ -13,8 +13,8 @@ ADD_EXECUTABLE(pGenPath ${SRC})
 
 TARGET_LINK_LIBRARIES(pGenPath
    ${MOOS_LIBRARIES}
-   mbutil
    geometry
+   mbutil
    m
    pthread)
 
