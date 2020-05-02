@@ -43,15 +43,17 @@ double m_heading;
 double m_zlength;
 double m_decay_factor;
 double m_desired_speed;
-double m_num_cycles;
+double m_cycles_thres;
 // double thres;
 double m_zig_heading;
 double m_zag_heading;
+double m_up_bound;
+double m_low_bound;
 
 protected: // State variables
 
-vector <double> xgradlist;
-vector <double> ygradlist;
+//vector <double> xgradlist;
+//vector <double> ygradlist;
 double prev_x;
 double prev_y;
 double current_x;
@@ -67,6 +69,7 @@ bool survey_stage;
 double min_temp;
 double max_temp;
 double thres;
+double m_num_cycles;
 
 };
 

@@ -80,8 +80,8 @@ bool BHV_CZigZag::setParam(string param, string val)
   else if((param == "speed") && isNumber(val)) {
     m_desired_speed = double_val;
   }
-  else if((param == "num_cycles") && isNumber(val)) {
-    m_num_cycles = double_val;
+  else if((param == "cycles_thres") && isNumber(val)) {
+    m_cycles_thres = double_val;
   }
   else if((param == "zig_heading") && isNumber(val)) {
     m_zig_heading = double_val;
@@ -89,6 +89,13 @@ bool BHV_CZigZag::setParam(string param, string val)
   else if((param == "zag_heading") && isNumber(val)) {
     m_zag_heading = double_val;
   }
+  else if((param == "up_bound") && isNumber(val)) {
+    m_up_bound = double_val;
+  }
+  else if((param == "low_bound") && isNumber(val)) {
+    m_low_bound = double_val;
+  }
+
   // else if((param == "grad_thres") && isNumber(val)) {
   //   thres = double_val;
   // }
@@ -173,6 +180,8 @@ IvPFunction* BHV_CZigZag::onRunState()
   if(ok1){
 
     if(survey_stage){
+      postBoolMessage("SURVEY_STAGE",true);
+      postBoolMessage("ESTIMATION_STAGE",false);
       bool handled = handleSurveyReport(estimate_report);
       if(!handled){
         postWMessage("Unable to process UCTD Report during survey!");
@@ -180,16 +189,22 @@ IvPFunction* BHV_CZigZag::onRunState()
     }
 
     else{
+      postBoolMessage("SURVEY_STAGE",false);
+      postBoolMessage("ESTIMATION_STAGE",true);
       bool handled = handleSensingReport(estimate_report);
       if(!handled){
         postWMessage("Unable to process UCTD Report during estimation!");
       }
-    }
-    // else{
-    //   postWMessage("Handled!");
-    // }
-  }
 
+      if(current_y>m_up_bound){
+        m_heading = -180;
+      }
+      if(current_y<m_low_bound){
+        m_heading = 0;
+      }
+    }
+
+  }
 
   // Part N: Prior to returning the IvP function, apply the priority wt
   // Actual weight applied may be some value different than the configured
@@ -272,7 +287,7 @@ bool BHV_CZigZag::handleSensingReport(const string& request)
   }
 
   //Estimate temp gradient
-  postWMessage("cycle = "+to_string(m_num_cycles));
+  postMessage("CYCLE",m_num_cycles);
 
   if (prev_temp != -999){
 
@@ -283,11 +298,11 @@ bool BHV_CZigZag::handleSensingReport(const string& request)
     //postWMessage("grad_prev = "+to_string(prev_tgrad));
     //postWMessage("grad_div = "+to_string(tgrad/prev_tgrad));
     if (abs(tgrad)>thres && !crossed_front && abs(tgrad)<0.3){
-      postWMessage("grad = "+to_string(tgrad));
+      postMessage("TEMP_GRADIENT", tgrad);
 
       //add point to max gradient list
-      xgradlist.push_back(prev_x);
-      ygradlist.push_back(prev_y);
+      //xgradlist.push_back(prev_x);
+      //ygradlist.push_back(prev_y);
 
       //frontx = prev_x;
       fronty = prev_y;
@@ -316,7 +331,7 @@ bool BHV_CZigZag::handleSensingReport(const string& request)
 
     double diff = abs(fronty-current_y);
     //change vehicle heading if crossed front
-    if (m_num_cycles < 5){
+    if (m_num_cycles < floor(m_cycles_thres/2)){
       if ((crossed_front) && (diff>=m_zlength)){
         if((m_heading>=90) && (m_heading<=270)){
           m_heading = m_zig_heading;
@@ -333,15 +348,25 @@ bool BHV_CZigZag::handleSensingReport(const string& request)
       }
     }
 
-    if ((m_num_cycles)>=5 && (m_num_cycles)<=12){
+    if ((m_num_cycles)>=floor(m_cycles_thres/2) && (m_num_cycles)<=m_cycles_thres){
       if ((crossed_front) && (diff>=m_zlength)){
         if((m_heading>=90) && (m_heading<=270)){
-          m_heading = m_zag_heading+180;
+          if(m_heading<180){
+            m_heading = m_zag_heading+180;
+          }
+          else{
+            m_heading = m_zag_heading-180;
+          }
           m_num_cycles = m_num_cycles+1;
         }
 
         else{
-          m_heading = m_zig_heading+180;
+          if(m_heading<90){
+            m_heading = m_zig_heading+180;
+          }
+          else{
+            m_heading = m_zig_heading-180;
+          }
           m_num_cycles = m_num_cycles+1;
         }
         crossed_front=false;
@@ -349,7 +374,7 @@ bool BHV_CZigZag::handleSensingReport(const string& request)
       }
     }
 
-    if ((m_num_cycles)>12){
+    if ((m_num_cycles)>m_cycles_thres){
       setComplete();
     }
   }
@@ -388,11 +413,11 @@ bool BHV_CZigZag::handleSurveyReport(const string& request)
     }
   }
 
-  if(current_y>=-10){
+  if(current_y>=m_up_bound){
     min_temp = current_temp;
   }
 
-  if(current_y<-160){
+  if(current_y<m_low_bound){
     max_temp = current_temp;
     double t_diff = abs(max_temp-min_temp);
 
@@ -426,7 +451,7 @@ bool BHV_CZigZag::handleSurveyReport(const string& request)
 
     survey_stage = false;
     m_heading = 0;
-    postWMessage("grad_thre = " + to_string(thres));
+    postMessage("GRADIENT_THRESHOLD",thres);
 
   }
   return(true);

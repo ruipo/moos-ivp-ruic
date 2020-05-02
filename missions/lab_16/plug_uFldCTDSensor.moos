@@ -13,14 +13,14 @@ ProcessConfig = uFldCTDSensor
   ymax  =  0  
      
   offset = -90
-  angle  = 10
-  amplitude = 25
-  period = 400
+  angle  = 8
+  amplitude = 15
+  period = 350
   wavelength = 300
   alpha = 400
   beta = 20
-  temperature_north = 18
-  temperature_south = 28
+  temperature_north = 19
+  temperature_south = 27
   sigma = 0.01
 }
 

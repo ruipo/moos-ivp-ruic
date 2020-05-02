@@ -9,6 +9,8 @@ initialize   SURVEY  = true
 initialize   AVOID   = true
 initialize   SURVEY_UNDERWAY = false
 initialize   OPREGION = true
+initialize   ZIGZAG = false
+initialize   START = true
 
 set MODE = ACTIVE {
   DEPLOY = true
@@ -57,6 +59,28 @@ set MODE = STATION-KEEPING {
 //   visual_hints = vertex_color=yellow, edge_color=gray25
 //   visual_hints = vertex_size=1, edge_size=1
 // }
+
+//----------------------------------------------
+Behavior = BHV_Waypoint
+{ 
+  name         = waypt_survey
+  pwt          = 100
+  condition    = MODE==SURVEYING
+  condition    = START = true
+  perpetual    = false
+  updates      = SURVEY_UPDATES
+  activeflag   = SURVEY_UNDERWAY = true
+  //inactiveflag = SURVEY_UNDERWAY = false
+  endflag      = ZIGZAG = true
+  endflag      = START = false
+
+         speed = 2.0
+        //radius = 2.0
+     //nm_radius = 8.0
+        points = -80,-130
+        //repeat = 10
+          //lead = 8
+}
 
 //----------------------------------------------
 Behavior = BHV_Waypoint
@@ -139,16 +163,21 @@ Behavior=BHV_CZigZag
 {
  name = czigzag
  condition    = MODE==SURVEYING
+ condition    = ZIGZAG = true
  perpetual    = true
  activeflag   = SURVEY_UNDERWAY = true
  endflag      = RETURN = true
 
  heading_init  = 180
- zigzag_length = 35
+ zigzag_length = 30
  decay_factor = 0.95
  speed = 2.0
- zig_heading = 20
- zag_heading = 160
+ zig_heading = 5 //angle between 270 to 90
+ zag_heading = 175 //angle between 90 to 270
+ cycles_thres = 30
+ up_bound = -35
+ low_bound = -155
+
  //grad_thres = 0.08
 
 }
