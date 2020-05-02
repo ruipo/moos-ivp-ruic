@@ -43,6 +43,9 @@ double m_zlength;
 double m_decay_factor;
 double m_desired_speed;
 double m_num_cycles;
+double thres;
+double m_zig_heading;
+double m_zag_heading;
 
 protected: // State variables
 
@@ -57,7 +60,8 @@ double current_temp;
 std::string estimate_report;
 double fronty;
 bool crossed_front;
-double thres;
+double prev_tgrad;
+double tgrad;
 
 };
 

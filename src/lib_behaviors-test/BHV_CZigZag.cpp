@@ -32,7 +32,7 @@ BHV_CZigZag::BHV_CZigZag(IvPDomain domain) :
   m_zlength = 100;
   m_decay_factor = 0.5;
   //m_stagger_width = 10;
-  m_num_cycles = 5;
+  m_num_cycles = 0;
 
 
   // Default values for behavior state variables
@@ -45,7 +45,8 @@ BHV_CZigZag::BHV_CZigZag(IvPDomain domain) :
   estimate_report = "";
   fronty = -999;
   crossed_front = false;
-  thres = 0.1;
+  prev_tgrad = -999;
+  tgrad = -999;
 
   // Add any variables this behavior needs to subscribe for
   addInfoVars("UCTD_MSMNT_REPORT");
@@ -77,6 +78,15 @@ bool BHV_CZigZag::setParam(string param, string val)
   }
   else if((param == "num_cycles") && isNumber(val)) {
     m_num_cycles = double_val;
+  }
+  else if((param == "zig_heading") && isNumber(val)) {
+    m_zig_heading = double_val;
+  }
+  else if((param == "zag_heading") && isNumber(val)) {
+    m_zag_heading = double_val;
+  }
+  else if((param == "grad_thres") && isNumber(val)) {
+    thres = double_val;
   }
 
   else{
@@ -248,12 +258,16 @@ bool BHV_CZigZag::handleSensingReport(const string& request)
   }
 
   //Estimate temp gradient
+  postWMessage("cycle = "+to_string(m_num_cycles));
 
   if (prev_temp != -999){
 
+    //prev_tgrad  = tgrad;
     double dist = pow((pow((current_y-prev_y),2) + pow((current_x-prev_x),2)),0.5);
-    double tgrad = (current_temp-prev_temp)/dist;
+    tgrad = (current_temp-prev_temp)/dist;
     //postWMessage("grad = "+to_string(tgrad));
+    //postWMessage("grad_prev = "+to_string(prev_tgrad));
+    //postWMessage("grad_div = "+to_string(tgrad/prev_tgrad));
     if (abs(tgrad)>thres && !crossed_front && abs(tgrad)<0.3){
       postWMessage("grad = "+to_string(tgrad));
 
@@ -285,22 +299,45 @@ bool BHV_CZigZag::handleSensingReport(const string& request)
     //   postWMessage("fronty = " +to_string(fronty));
     //   postWMessage("currenty="+to_string(current_y));
     // }
-    
+
     double diff = abs(fronty-current_y);
     //change vehicle heading if crossed front
-    if ((crossed_front) && (diff>=m_zlength)){
-      if((m_heading>=90) && (m_heading<=270)){
-        m_heading = 20;
-      }
+    if (m_num_cycles < 5){
+      if ((crossed_front) && (diff>=m_zlength)){
+        if((m_heading>=90) && (m_heading<=270)){
+          m_heading = m_zig_heading;
+          m_num_cycles = m_num_cycles+1;
+        }
 
-      else{
-        m_heading = 160;
+        else{
+          m_heading = m_zag_heading;
+          m_num_cycles = m_num_cycles+1;
+        }
+        m_zlength = m_decay_factor*m_zlength;
+        crossed_front=false;
+        //postWMessage("new_heading = " +to_string(m_heading));
       }
-      m_zlength = m_decay_factor*m_zlength;
-      crossed_front=false;
-      //postWMessage("new_heading = " +to_string(m_heading));
     }
 
+    if ((m_num_cycles)>=5 && (m_num_cycles)<=12){
+      if ((crossed_front) && (diff>=m_zlength)){
+        if((m_heading>=90) && (m_heading<=270)){
+          m_heading = m_zag_heading+180;
+          m_num_cycles = m_num_cycles+1;
+        }
+
+        else{
+          m_heading = m_zig_heading+180;
+          m_num_cycles = m_num_cycles+1;
+        }
+        crossed_front=false;
+
+      }
+    }
+
+    if ((m_num_cycles)>12){
+      setComplete();
+    }
   }
 
   return(true);
