@@ -144,11 +144,11 @@ Behavior=BHV_CZigZag
  endflag      = RETURN = true
 
  heading_init  = 180
- zigzag_length = 60
- decay_factor = 0.85
+ zigzag_length = 35
+ decay_factor = 0.95
  speed = 2.0
  zig_heading = 20
  zag_heading = 160
- grad_thres = 0.08
+ //grad_thres = 0.08
 
 }

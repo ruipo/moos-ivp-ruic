@@ -33,6 +33,7 @@ public:
 
 protected: // Local Utility functions
   bool handleSensingReport(const std::string&);
+  bool handleSurveyReport(const string&);
   IvPFunction* buildFunctionWithZAIC();
 
 protected: // Configuration parameters
@@ -43,7 +44,7 @@ double m_zlength;
 double m_decay_factor;
 double m_desired_speed;
 double m_num_cycles;
-double thres;
+// double thres;
 double m_zig_heading;
 double m_zag_heading;
 
@@ -62,6 +63,10 @@ double fronty;
 bool crossed_front;
 double prev_tgrad;
 double tgrad;
+bool survey_stage;
+double min_temp;
+double max_temp;
+double thres;
 
 };
 

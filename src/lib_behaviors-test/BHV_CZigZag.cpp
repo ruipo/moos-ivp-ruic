@@ -33,6 +33,7 @@ BHV_CZigZag::BHV_CZigZag(IvPDomain domain) :
   m_decay_factor = 0.5;
   //m_stagger_width = 10;
   m_num_cycles = 0;
+  thres = -999;
 
 
   // Default values for behavior state variables
@@ -47,6 +48,9 @@ BHV_CZigZag::BHV_CZigZag(IvPDomain domain) :
   crossed_front = false;
   prev_tgrad = -999;
   tgrad = -999;
+  survey_stage = true;
+  min_temp = 0;
+  max_temp = 0;
 
   // Add any variables this behavior needs to subscribe for
   addInfoVars("UCTD_MSMNT_REPORT");
@@ -85,9 +89,9 @@ bool BHV_CZigZag::setParam(string param, string val)
   else if((param == "zag_heading") && isNumber(val)) {
     m_zag_heading = double_val;
   }
-  else if((param == "grad_thres") && isNumber(val)) {
-    thres = double_val;
-  }
+  // else if((param == "grad_thres") && isNumber(val)) {
+  //   thres = double_val;
+  // }
 
   else{
     return(false);
@@ -167,9 +171,19 @@ IvPFunction* BHV_CZigZag::onRunState()
 
   estimate_report = getBufferStringVal("UCTD_MSMNT_REPORT",ok1);
   if(ok1){
-    bool handled = handleSensingReport(estimate_report);
-    if(!handled){
-      postWMessage("Unable to process UCTD Report!");
+
+    if(survey_stage){
+      bool handled = handleSurveyReport(estimate_report);
+      if(!handled){
+        postWMessage("Unable to process UCTD Report during survey!");
+      }
+    }
+
+    else{
+      bool handled = handleSensingReport(estimate_report);
+      if(!handled){
+        postWMessage("Unable to process UCTD Report during estimation!");
+      }
     }
     // else{
     //   postWMessage("Handled!");
@@ -342,3 +356,83 @@ bool BHV_CZigZag::handleSensingReport(const string& request)
 
   return(true);
 }
+
+
+//-----------------------------------------------------------
+// Procedure: handleSurveyReport
+
+bool BHV_CZigZag::handleSurveyReport(const string& request)
+{
+  //Parse the string report
+  string vname;
+  vector<string> svector = parseString(request, ',');
+  unsigned int i, vsize = svector.size();
+  std::string s;
+  for(i=0; i<vsize; i++) {
+    string param = tolower(biteStringX(svector[i], '='));
+    string value = svector[i];
+    if(param == "vname"){
+      vname = value;
+    }
+    else if (param == "x"){
+      prev_x = current_x;
+      current_x = atof(value.c_str());
+    }
+    else if (param == "y"){
+      prev_y = current_y;
+      current_y = atof(value.c_str());
+    }
+    else if (param == "temp"){
+      prev_temp = current_temp;
+      current_temp = atof(value.c_str());
+    }
+  }
+
+  if(current_y>=-10){
+    min_temp = current_temp;
+  }
+
+  if(current_y<-160){
+    max_temp = current_temp;
+    double t_diff = abs(max_temp-min_temp);
+
+    if(t_diff<=2){
+      thres = 0.04;
+    }
+
+    else if((t_diff>2) && (t_diff <3)){
+      thres = 0.045;
+    }
+
+    else if((t_diff>=3) && (t_diff <4)){
+      thres = 0.06;
+    }
+
+    else if((t_diff>=4) && (t_diff <5)){
+      thres = 0.07;
+    }
+
+    else if((t_diff>=5) && (t_diff <6)){
+      thres = 0.08;
+    }
+
+    else if((t_diff>=6) && (t_diff <8)){
+      thres = 0.09;
+    }
+
+    else if((t_diff>=8)){
+      thres = 0.1;
+    }
+
+    survey_stage = false;
+    m_heading = 0;
+    postWMessage("grad_thre = " + to_string(thres));
+
+  }
+  return(true);
+}
+
+
+
+
+
