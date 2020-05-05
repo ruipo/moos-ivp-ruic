@@ -77,7 +77,7 @@ Behavior = BHV_Waypoint
          speed = 2.0
         //radius = 2.0
      //nm_radius = 8.0
-        points = -80,-130
+        points = -30,-30
         //repeat = 10
           //lead = 8
 }
@@ -174,7 +174,7 @@ Behavior=BHV_CZigZag
  speed = 2.0
  zig_heading = 5 //angle between 270 to 90
  zag_heading = 175 //angle between 90 to 270
- cycles_thres = 30
+ cycles_thres = 12
  up_bound = -35
  low_bound = -155
 

@@ -413,13 +413,19 @@ bool BHV_CZigZag::handleSurveyReport(const string& request)
     }
   }
 
-  if(current_y>=m_up_bound){
+  //postWMessage("curr_y = " + to_string(current_y));
+
+  if(current_y>m_up_bound-10){
     min_temp = current_temp;
   }
 
-  if(current_y<m_low_bound){
+  if(current_y<m_low_bound+10){
     max_temp = current_temp;
     double t_diff = abs(max_temp-min_temp);
+    //postWMessage("max_temp = " + to_string(max_temp));
+    //postWMessage("min_temp = " + to_string(min_temp));
+
+    postMessage("TEMP_DIFF",t_diff);
 
     if(t_diff<=2){
       thres = 0.04;
