@@ -4,7 +4,7 @@
 #--------------------------------------------------------------
 TIME_WARP=1
 JUST_MAKE="no"
-VNAME="Rui"
+VNAME="Michael"
 COOL_FAC=50
 COOL_STEPS=1000
 CONCURRENT="true"
@@ -63,13 +63,13 @@ done
 #-------------------------------------------------------
 #  Part 3: Create the .moos and .bhv files. 
 #-------------------------------------------------------
-nsplug meta_vehicle.moos targ_$VNAME.moos -f WARP=$TIME_WARP  \
+nsplug meta_vehicle2.moos targ_$VNAME.moos -f WARP=$TIME_WARP  \
    VNAME=$VNAME      START_POS=$START_POS                    \
-   VPORT="9001"       SHARE_LISTEN="9301"                      \
+   VPORT="9002"       SHARE_LISTEN="9302"                      \
    VTYPE=UUV          COOL_FAC=$COOL_FAC  COOL_STEPS=$COOL_STEPS\
    CONCURRENT=$CONCURRENT  ADAPTIVE=$ADAPTIVE
 
-nsplug meta_vehicle.bhv targ_$VNAME.bhv -f VNAME=$VNAME      \
+nsplug meta_vehicle2.bhv targ_$VNAME.bhv -f VNAME=$VNAME      \
     START_POS=$START_POS SURVEY_X=$SURVEY_X SURVEY_Y=$SURVEY_Y \
         HEIGHT=$HEIGHT1   WIDTH=$WIDTH1 LANE_WIDTH=$LANE_WIDTH1 \
         DEGREES=$DEGREES1

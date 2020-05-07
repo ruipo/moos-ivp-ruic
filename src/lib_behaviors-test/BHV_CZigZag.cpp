@@ -428,19 +428,19 @@ bool BHV_CZigZag::handleSurveyReport(const string& request)
     postMessage("TEMP_DIFF",t_diff);
 
     if(t_diff<=2){
-      thres = 0.04;
+      thres = 0.043;
     }
 
     else if((t_diff>2) && (t_diff <3)){
-      thres = 0.045;
+      thres = 0.053;
     }
 
     else if((t_diff>=3) && (t_diff <4)){
-      thres = 0.06;
+      thres = 0.063;
     }
 
     else if((t_diff>=4) && (t_diff <5)){
-      thres = 0.07;
+      thres = 0.073;
     }
 
     else if((t_diff>=5) && (t_diff <6)){
@@ -452,7 +452,7 @@ bool BHV_CZigZag::handleSurveyReport(const string& request)
     }
 
     else if((t_diff>=8)){
-      thres = 0.1;
+      thres = 0.09;
     }
 
     survey_stage = false;

@@ -93,18 +93,17 @@ ProcessConfig = uFldShoreBroker
 //--------------------------------------------------
 // uFldNodeComms Configuration Block
 
-ProcessConfig = uFldNodeComms
-{
-	AppTick   = 2
-	CommsTick = 2
+ ProcessConfig = uFldNodeComms
+ {
+   AppTick       = 2
+   CommsTick     = 2
 
-	comms_range      = 100
-	critical_range   = 25
-	min_msg_interval = 15
-	max_msg_length   = 2048
-	groups           = true
-	view_node_rpt_pulses = true
-}
+   comms_range          = 100
+   critical_range       = 25
+   min_msg_interval     = 0       // Unlimited frequency
+   max_msg_length       = 0       // Unlimited length 
+   view_node_rpt_pulses = true
+ }
 
 //--------------------------------------------------------
 ProcessConfig = pMarineViewer
@@ -128,14 +127,19 @@ ProcessConfig = pMarineViewer
 	procs_font_size      = large
 	nodes_font_size      = xlarge
 
+
   SCOPE = UCTD_PARAMETER_ESTIMATE
   //ACTION = STATION_ALL = true
+  //ACTION = FGR_SHOW = guess
+  //ACTION = FGR_SHOW = truth
 
   button_one   = DEPLOY_ALL  # DEPLOY_ALL=true 
-  button_one   = MOOS_MANUAL_OVERRIDE_ALL=false # STATION_KEEP_ALL=false 
+  button_one   = MOOS_MANUAL_OVERRIDE_ALL=false
   button_one   = RETURN_ALL=false
   button_one   = FRONT_SURVEY=true
-  button_two   = RETURN_ALL  # RETURN_ALL=true 
+  button_one   = SURVEY_UNDERWAY = true
+  button_one   = START = true
+  button_two   = RETURN_ALL  # RETURN_ALL=true # DEPLOY_ALL=false # COLLABED=false # ZIGZAG_ALL=false
 
   button_three = ALLSTOP  # DEPLOY_ALL=false # MOOS_MANUAL_OVERRIDE_ALL=true
 //  button_four  = SHOW:both   # FGR_SHOW=both
