@@ -6,7 +6,12 @@ ServerHost = localhost
 ServerPort = 9000
 Community  = shoreside
 
-#include plug_origin_warp.moos
+MOOSTimeWarp = 20
+//LatOrigin  = 43.825300 
+//LongOrigin = -70.330400 
+LatOrigin  = 42.3584
+LongOrigin = -71.08745
+
   
 //--------------------------------------------------------
 Processconfig = ANTLER
@@ -27,11 +32,69 @@ Processconfig = ANTLER
   Run = pGradeFrontEstimate @ NewConsole=false
 }
 
-#include plug_uFldCTDSensor.moos
+//--------------------------------------------------
+// uFldGenericSensor configuration block from plugin
+
+ProcessConfig = uFldCTDSensor
+{
+  AppTick   = 3
+  CommsTick = 3
+
+   // Configuring Artificial Noise                               
+  xmin  = 0       
+  xmax  = 500       
+  ymin  = -400       
+  ymax  =  0  
+     
+  offset = -100
+  angle  = 12
+  amplitude = 20
+  period = 350
+  wavelength = 200
+  alpha = 500
+  beta = 20
+  temperature_north = 20
+  temperature_south = 24
+  sigma = 0.01
+}
+
+
 //#include plug_uFldCTDSensor_1.moos
 
-#include plug_pHostInfo.moos
-#include plug_pLogger.moos
+//--------------------------------------------------
+// pHostInfo configuration block from plugin
+
+ProcessConfig = pHostInfo
+{
+  AppTick 	= 1
+  CommsTick 	= 1
+
+  DEFAULT_HOSTIP = localhost
+}
+
+
+//--------------------------------------------------
+// pLogger Configuration Block (Created from Plugin)
+
+ProcessConfig = pLogger
+{
+  AppTick 	= 5
+  CommsTick 	= 5
+  
+  File		= LOG_$(VNAME)
+  PATH		= ./
+  SyncLog 	= true @ 0.2
+  AsyncLog 	= true
+  FileTimeStamp = true
+
+  Log = IVPHELM_LIFE_EVENT @ 0 nosync
+
+  // Log it all!!!!!
+  WildCardLogging = true 
+  WildCardOmitPattern = *_STATUS
+  LogAuxSrc = true
+}
+
 
 //--------------------------------------------------
 // pGradeFrontEstiamte Configuration Block
@@ -63,7 +126,7 @@ ProcessConfig = pShare
   AppTick    = 2
   CommsTick  = 2
 
-  input = route = $(IP_ADDR):$(PSHARE_PORT)
+  input = route = localhost:9300
 }
 
 
@@ -146,3 +209,4 @@ ProcessConfig = pMarineViewer
 //  button_four  = SHOW:both   # FGR_SHOW=both
   button_four = STATION # STATION_KEEP_ALL=true
 }
+

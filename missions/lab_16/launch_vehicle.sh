@@ -18,6 +18,11 @@ WIDTH1=50
 LANE_WIDTH1=20
 DEGREES1=270
 
+IP_ADDR="localhost"
+PSHARE_PORT=""
+INDEX="1"
+SHORE="localhost:9300"
+PSHARE_PORT=""
 #-------------------------------------------------------
 #  Part 2: Check for and handle command-line arguments
 #-------------------------------------------------------
@@ -32,6 +37,11 @@ for ARGI; do
 	echo "  --unconcurrent, -uc                    "
 	echo "  --angle=DEGREE_VALUE                   "
 	echo "  --cool=COOL_FAC                        "
+    echo "  --index=INDEX                                  " 
+    echo "  --ip=<addr>       (default is localhost)       " 
+    echo "  --startpos=X,Y    (Default is 0,0)             " 
+    echo "  --shore=IP:PORT   (Default is localhost:9300)  " 
+    echo "  --pshare=PORT     (Default is 9301)            " 
 	exit 0;
     elif [ "${ARGI:0:8}" = "--vname=" ]; then
         VNAME="${ARGI#--vname=*}"
@@ -54,18 +64,35 @@ for ARGI; do
     elif [ "${ARGI}" = "--adaptive" -o "${ARGI}" = "-a" ]; then
         ADAPTIVE="true"
         UNDEFINED_ARG=""
+    elif [ "${ARGI:0:8}" = "--index=" ] ; then
+        INDEX="${ARGI#--index=*}"
+    elif [ "${ARGI:0:5}" = "--ip=" ]; then
+        IP_ADDR="${ARGI#--ip=*}"
+    elif [ "${ARGI:0:11}" = "--startpos=" ] ; then
+        START_POS="${ARGI#--startpos=*}"
+    elif [ "${ARGI:0:8}" = "--shore=" ] ; then
+        SHORE="${ARGI#--shore=*}"
+    elif [ "${ARGI:0:9}" = "--pshare=" ]; then
+        PSHARE_PORT="${ARGI#--pshare=*}"
     else 
 	echo "launch_vehicle.sh: Bad Arg:" $ARGI
 	exit 0
     fi
 done
 
+if [ "${PSHARE_PORT}" = "" ] ; then
+    PSHARE_PORT="930"$INDEX
+fi
+
+VNAME=$VNAME"_"$INDEX
+
 #-------------------------------------------------------
 #  Part 3: Create the .moos and .bhv files. 
 #-------------------------------------------------------
 nsplug meta_vehicle.moos targ_$VNAME.moos -f WARP=$TIME_WARP  \
    VNAME=$VNAME      START_POS=$START_POS                    \
-   VPORT="9001"       SHARE_LISTEN="9301"                      \
+   VPORT="900"$INDEX   PSHARE_PORT=$PSHARE_PORT                \
+   IP_ADDR=$IP_ADDR    SHORE=$SHORE                             \
    VTYPE=UUV          COOL_FAC=$COOL_FAC  COOL_STEPS=$COOL_STEPS\
    CONCURRENT=$CONCURRENT  ADAPTIVE=$ADAPTIVE
 

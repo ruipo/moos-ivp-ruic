@@ -3,7 +3,7 @@ ProcessConfig = pFrontEstimate
    AppTick    = 4
    CommsTick  = 4
 
-   reporting_vname = "Rui"
+   reporting_vname = "Rui_1"
    vname = $(VNAME)
    temperature_factor = $(COOL_FAC)
    cooling_steps = $(COOL_STEPS)
