@@ -22,7 +22,6 @@ IP_ADDR="localhost"
 PSHARE_PORT=""
 INDEX="1"
 SHORE="localhost:9300"
-PSHARE_PORT=""
 #-------------------------------------------------------
 #  Part 2: Check for and handle command-line arguments
 #-------------------------------------------------------
