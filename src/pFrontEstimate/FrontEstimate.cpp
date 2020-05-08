@@ -348,14 +348,14 @@ bool CFrontEstimate::OnNewMail(MOOSMSG_LIST &NewMail)
 
     else if (rMsg.m_sKey == "COLLABED")
     {
-      if (rMsg.GetDouble() == 1){
+      if (rMsg.GetString() == "true"){
         string comm_rec = "src_node="+vname+",dest_node=all,var_name=COMMS_REC,string_val=true";
         Notify("NODE_MESSAGE_LOCAL",comm_rec);
       }
-      else{
-        string comm_rec = "src_node="+vname+",dest_node=all,var_name=COMMS_REC,string_val=true";
-        Notify("NODE_MESSAGE_LOCAL",comm_rec);
-      }
+      // else{
+      //   string comm_rec = "src_node="+vname+",dest_node=all,var_name=COMMS_REC,string_val=true";
+      //   Notify("NODE_MESSAGE_LOCAL",comm_rec);
+      // }
     }
 
     else if (rMsg.m_sKey == "COMMS_REC")
