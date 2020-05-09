@@ -74,6 +74,7 @@ Behavior = BHV_Waypoint
   //inactiveflag = SURVEY_UNDERWAY = false
   endflag      = ZIGZAG = true
   endflag      = START = false
+  endflag			 = COLLABED = false
 
          speed = 2.0
         //radius = 2.0
@@ -206,7 +207,7 @@ Behavior=BHV_CZigZag
  speed = 2.0
  zig_heading = 10 //angle between 270 to 90
  zag_heading = 170 //angle between 90 to 270
- cycles_thres = 7
+ cycles_thres = 9
  up_bound = -60
  low_bound = -140
 

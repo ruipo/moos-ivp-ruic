@@ -62,6 +62,7 @@ CFrontEstimate::CFrontEstimate()
   min_T_S = 20;
   max_T_S = 30;
   comms_rec = false;
+  completed = false;
 
   report_var = "UCTD_PARAMETER_ESTIMATE";
 }
